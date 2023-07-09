@@ -6,39 +6,35 @@ Values V1, V2, V3 ... V28 and Amount are used as input, and Class is used as an 
 
 The report for the run with random train/test split
 
-Valid cases: 284315
-
-Fraud cases: 492
-
-Number of test samples 56962
-
-Valid test cases: 56865
-
-Fraud test cases: 97
+Valid cases: 284315  
+Fraud cases: 492  
+Number of test samples 56962  
+Valid test cases: 56865  
+Fraud test cases: 97  
 
 
-Time spent is 0.28099918365478516 seconds.
-Number of errors for Linear Regression model is 69 
-Linear Regression: Accuracy is 0.999 
-Linear Regression: Precision is 0.750 
-Linear Regression: Recall is 0.433 
-Linear Regression: F1-Score is 0.549 
-Linear Regression: Matthews correlation coefficient is 0.569 
-Confusion matrix: 
- [[56851    14] 
- [   55    42]] 
+Time spent is 0.28099918365478516 seconds.  
+Number of errors for Linear Regression model is 69   
+Linear Regression: Accuracy is 0.999   
+Linear Regression: Precision is 0.750   
+Linear Regression: Recall is 0.433   
+Linear Regression: F1-Score is 0.549   
+Linear Regression: Matthews correlation coefficient is 0.569   
+Confusion matrix:   
+ [[56851    14]   
+ [   55    42]]   
 
 
-Time spent is 1.3414480686187744 seconds.
-Number of errors for Logistic Regression model is 67
-Logistic Regression: Accuracy is 0.999
-Logistic Regression: Precision is 0.759
-Logistic Regression: Recall is 0.454
-Logistic Regression: F1-Score is 0.568
-Logistic Regression: Matthews correlation coefficient is 0.586
-Confusion matrix:
- [[56851    14]
- [   53    44]]
+Time spent is 1.3414480686187744 seconds.  
+Number of errors for Logistic Regression model is 67  
+Logistic Regression: Accuracy is 0.999  
+Logistic Regression: Precision is 0.759  
+Logistic Regression: Recall is 0.454  
+Logistic Regression: F1-Score is 0.568  
+Logistic Regression: Matthews correlation coefficient is 0.586  
+Confusion matrix:  
+ [[56851    14]  
+ [   53    44]]  
 
 
 Time spent is 2.781132459640503 seconds.
