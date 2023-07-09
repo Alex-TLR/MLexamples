@@ -7,10 +7,13 @@ Values V1, V2, V3 ... V28 and Amount are used as input, and Class is used as an 
 The report for the run with random train/test split
 
 Valid cases: 284315
+
 Fraud cases: 492
 
 Number of test samples 56962
+
 Valid test cases: 56865
+
 Fraud test cases: 97
 
 
