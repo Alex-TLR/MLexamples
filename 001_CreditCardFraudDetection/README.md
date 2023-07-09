@@ -15,15 +15,15 @@ Fraud test cases: 97
 
 
 Time spent is 0.28099918365478516 seconds.
-Number of errors for Linear Regression model is 69
-Linear Regression: Accuracy is 0.999
-Linear Regression: Precision is 0.750
-Linear Regression: Recall is 0.433
-Linear Regression: F1-Score is 0.549
-Linear Regression: Matthews correlation coefficient is 0.569
-Confusion matrix:
- [[56851    14]
- [   55    42]]
+Number of errors for Linear Regression model is 69 
+Linear Regression: Accuracy is 0.999 
+Linear Regression: Precision is 0.750 
+Linear Regression: Recall is 0.433 
+Linear Regression: F1-Score is 0.549 
+Linear Regression: Matthews correlation coefficient is 0.569 
+Confusion matrix: 
+ [[56851    14] 
+ [   55    42]] 
 
 
 Time spent is 1.3414480686187744 seconds.
