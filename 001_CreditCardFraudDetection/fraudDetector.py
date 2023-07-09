@@ -1,12 +1,20 @@
+''' 
+Author: Aleksej Avramovic
+Date: 10/07/2023
+
+Classification of transactions using different classifiers.
+All classifiers use default parameters.
+'''
+
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-import linearRegression
-import logisticRegression
-import decisionTree
-import supportVectorMachine
-import knn 
-import randomForest
+from classifiers import linearRegression
+from classifiers import logisticRegression
+from classifiers import decisionTree
+from classifiers import supportVectorMachine
+from classifiers import knn 
+from classifiers import randomForest
 
 # Import data
 data = pd.read_csv("creditcard.csv")
