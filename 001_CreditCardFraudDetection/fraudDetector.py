@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 import linearRegression
 import logisticRegression
 import decisionTree
@@ -13,7 +14,7 @@ data = pd.read_csv("creditcard.csv")
 # data.head() #check this out
 
 # Print some data description
-print(data.shape)
+# print(data.shape)
 # print(data.describe())
 
 # Check the number of valid and fraud transactions
@@ -27,13 +28,15 @@ print(f'Fraud cases: {len(fraudTransactions)}')
 
 x = data.iloc[:, 1:30].values
 y = data.iloc[:, -1].values
-print(x.shape)
-print(y.shape)
+
+# Normalize data
+# x = (x - np.mean(x))/np.std(x)
 
 # Standardize data
-x = (x - np.mean(x))/np.std(x)
+scaler = StandardScaler()
+x = scaler.fit_transform(x)
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 42)
 print("Number of test samples", len(y_test))
 validTransactionsTest = y_test[y_test == 0]
 fraudTransactionsTest = y_test[y_test == 1]
