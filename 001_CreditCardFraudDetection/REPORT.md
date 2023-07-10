@@ -47,6 +47,22 @@ Decision Tree: Matthews correlation coefficient is 0.747
 Confusion matrix:  
  [[56843    22]  
  [   26    71]]  
+ 
+Optimized Decision Tree 
+Best criterion is log_loss.
+Best max_depth is 5.
+Best max_leaf_nodes is 25.
+Best performance:
+Time spent is 6.621911525726318 seconds.
+Number of errors for Decision Tree model is 36
+Decision Tree: Accuracy is 0.999
+Decision Tree: Precision is 0.919
+Decision Tree: Recall is 0.694
+Decision Tree: F1-Score is 0.791
+Decision Tree: Matthews correlation coefficient is 0.798
+Confusion matrix:
+ [[56858     6]
+ [   30    68]]
 
 
 Time spent is 13.665133714675903 seconds.  
