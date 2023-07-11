@@ -6,92 +6,92 @@ Values V1, V2, V3 ... V28 and Amount are used as input, and Class is used as an 
 
 The report for the run with random train/test split:
 
-Valid cases: 284315  
-Fraud cases: 492  
-Number of test samples 56962  
-Valid test cases: 56865  
-Fraud test cases: 97  
+Valid cases: 284315
+Fraud cases: 492
+Number of test samples 56962
+Valid test cases: 56887
+Fraud test cases: 75
 
 
-Time spent is 0.28099918365478516 seconds.  
-Number of errors for Linear Regression model is 69   
-Linear Regression: Accuracy is 0.999   
-Linear Regression: Precision is 0.750   
-Linear Regression: Recall is 0.433   
-Linear Regression: F1-Score is 0.549   
-Linear Regression: Matthews correlation coefficient is 0.569   
-Confusion matrix:   
- [[56851    14]   
- [   55    42]]   
+Time spent is 0.7003524303436279 seconds.
+Number of errors for Linear Regression model is 66
+Linear Regression: Accuracy is 0.999
+Linear Regression: Precision is 1.000
+Linear Regression: Recall is 0.120
+Linear Regression: F1-Score is 0.214
+Linear Regression: Matthews correlation coefficient is 0.346
+Confusion matrix:
+ [[56887     0]
+ [   66     9]]
 
 
-Time spent is 1.3414480686187744 seconds.  
-Number of errors for Logistic Regression model is 67  
-Logistic Regression: Accuracy is 0.999  
-Logistic Regression: Precision is 0.759  
-Logistic Regression: Recall is 0.454  
-Logistic Regression: F1-Score is 0.568  
-Logistic Regression: Matthews correlation coefficient is 0.586  
-Confusion matrix:  
- [[56851    14]  
- [   53    44]]  
+Time spent is 1.5493683815002441 seconds.
+Number of errors for Logistic Regression model is 59
+Logistic Regression: Accuracy is 0.999
+Logistic Regression: Precision is 0.944
+Logistic Regression: Recall is 0.227
+Logistic Regression: F1-Score is 0.366
+Logistic Regression: Matthews correlation coefficient is 0.462
+Confusion matrix:
+ [[56886     1]
+ [   58    17]]
 
 
-Time spent is 2.781132459640503 seconds.  
-Number of errors for Decision Tree model is 48  
-Decision Tree: Accuracy is 0.999  
-Decision Tree: Precision is 0.763  
-Decision Tree: Recall is 0.732  
-Decision Tree: F1-Score is 0.747  
-Decision Tree: Matthews correlation coefficient is 0.747  
-Confusion matrix:  
- [[56843    22]  
- [   26    71]]  
+Time spent is 15.130817651748657 seconds.
+Number of errors for Decision Tree model is 51
+Decision Tree: Accuracy is 0.999
+Decision Tree: Precision is 0.654
+Decision Tree: Recall is 0.680
+Decision Tree: F1-Score is 0.667
+Decision Tree: Matthews correlation coefficient is 0.666
+Confusion matrix:
+ [[56860    27]
+ [   24    51]]
 
 
-Time spent is 13.665133714675903 seconds.  
-Number of errors for kNN model is 34  
-kNN: Accuracy is 0.999  
-kNN: Precision is 0.932  
-kNN: Recall is 0.701  
-kNN: F1-Score is 0.800  
-kNN: Matthews correlation coefficient is 0.808  
-Confusion matrix:  
- [[56860     5]  
- [   29    68]]  
+Time spent is 13.854992389678955 seconds.
+Number of errors for kNN model is 37
+kNN: Accuracy is 0.999
+kNN: Precision is 0.952
+kNN: Recall is 0.533
+kNN: F1-Score is 0.684
+kNN: Matthews correlation coefficient is 0.712
+Confusion matrix:
+ [[56885     2]
+ [   35    40]]
 
 
-Time spent is 175.03132319450378 seconds.  
-Number of errors for Random Forest model is 22  
-Random Forest: Accuracy is 1.000  
-Random Forest: Precision is 0.941  
-Random Forest: Recall is 0.825  
-Random Forest: F1-Score is 0.879  
-Random Forest: Matthews correlation coefficient is 0.881  
-Confusion matrix:  
- [[56860     5]  
- [   17    80]]  
+Time spent is 163.76197052001953 seconds.
+Number of errors for Random Forest model is 24
+Random Forest: Accuracy is 1.000
+Random Forest: Precision is 0.981
+Random Forest: Recall is 0.693
+Random Forest: F1-Score is 0.812
+Random Forest: Matthews correlation coefficient is 0.825
+Confusion matrix:
+ [[56886     1]
+ [   23    52]]
 
 
-Time spent is 121.82730627059937 seconds.  
-Number of errors for linear Support Vector Machine model is 37  
-linear Support Vector Machine: Accuracy is 0.999  
-linear Support Vector Machine: Precision is 0.800  
-linear Support Vector Machine: Recall is 0.825  
-linear Support Vector Machine: F1-Score is 0.812  
-linear Support Vector Machine: Matthews correlation coefficient is 0.812  
-Confusion matrix:  
- [[56845    20]  
- [   17    80]]  
+Time spent is 28.73442316055298 seconds.
+Number of errors for linear Support Vector Machine model is 24
+linear Support Vector Machine: Accuracy is 1.000
+linear Support Vector Machine: Precision is 1.000
+linear Support Vector Machine: Recall is 0.680
+linear Support Vector Machine: F1-Score is 0.810
+linear Support Vector Machine: Matthews correlation coefficient is 0.824
+Confusion matrix:
+ [[56887     0]
+ [   24    51]]
 
 
-Time spent is 375.1610486507416 seconds.  
-Number of errors for rbf Support Vector Machine model is 37  
-rbf Support Vector Machine: Accuracy is 0.999  
-rbf Support Vector Machine: Precision is 0.800  
-rbf Support Vector Machine: Recall is 0.825  
-rbf Support Vector Machine: F1-Score is 0.812  
-rbf Support Vector Machine: Matthews correlation coefficient is 0.812  
-Confusion matrix:  
- [[56845    20]  
- [   17    80]]  
+Time spent is 295.2604675292969 seconds.
+Number of errors for rbf Support Vector Machine model is 24
+rbf Support Vector Machine: Accuracy is 1.000
+rbf Support Vector Machine: Precision is 1.000
+rbf Support Vector Machine: Recall is 0.680
+rbf Support Vector Machine: F1-Score is 0.810
+rbf Support Vector Machine: Matthews correlation coefficient is 0.824
+Confusion matrix:
+ [[56887     0]
+ [   24    51]]
