@@ -7,7 +7,7 @@ def logisticRegression(x_train, x_test, y_train, y_test):
 
     # Make logistic regression model
     start = time()
-    LogRegression = linear_model.LogisticRegression(multi_class='ovr', max_iter = 1000)
+    LogRegression = linear_model.LogisticRegression()
     LogRegModel = LogRegression.fit(x_train, y_train)
     
     # Predict
