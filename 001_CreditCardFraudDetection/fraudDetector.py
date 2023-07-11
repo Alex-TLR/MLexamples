@@ -10,6 +10,7 @@ The shuffle for train/test split is disabled. Every new run should give the same
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 from classifiers import linearRegression
 from classifiers import logisticRegression
 from classifiers import decisionTree
@@ -35,7 +36,8 @@ x = data.iloc[:, 1:30].values
 y = data.iloc[:, -1].values
 
 # Standardize data
-x = (x - np.mean(x))/np.std(x)
+scaler = StandardScaler()
+x = scaler.fit_transform(x)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, shuffle = False)
 print("Number of test samples", len(y_test))

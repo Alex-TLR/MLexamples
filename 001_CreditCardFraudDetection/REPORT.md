@@ -4,7 +4,8 @@ The categories are highly unballanced. The are 284 315 valid and 492 fraud trans
 There is a random train/test split, therefore the results could be different for each run.  
 Values V1, V2, V3 ... V28 and Amount are used as input, and Class is used as an output. Since Class can take values 0 for valid transaction or 1 for fraud transaction, only input data is standardized to have zero mean and unit standard deviation.  
 
-The report for the run with random train/test split:
+The report for the run with non-shuffled train/test split :
+
 
 Valid cases: 284315
 Fraud cases: 492
@@ -95,3 +96,4 @@ rbf Support Vector Machine: Matthews correlation coefficient is 0.824
 Confusion matrix:
  [[56887     0]
  [   24    51]]
+
