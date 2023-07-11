@@ -7,7 +7,7 @@ def kNearestNeighbors(x_train, x_test, y_train, y_test):
 
     # Make KNN model
     start = time()
-    kNN = KNeighborsClassifier(n_neighbors=5)
+    kNN = KNeighborsClassifier()
     kNN.fit(x_train, y_train)
     
     # Predict

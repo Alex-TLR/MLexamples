@@ -28,7 +28,7 @@ y = data.iloc[:, -1].values
 print(x.shape)
 print(y.shape)
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 42)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, shuffle = False)
 print("Number of test samples", len(y_test))
 validTransactionsTest = y_test[y_test == 0]
 fraudTransactionsTest = y_test[y_test == 1]

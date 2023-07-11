@@ -4,6 +4,7 @@ Date: 10/07/2023
 
 Classification of transactions using different classifiers.
 All classifiers use default parameters.
+The shuffle for train/test split is disabled. Every new run should give the same results.
 '''
 
 import pandas as pd
@@ -20,7 +21,7 @@ from classifiers import randomForest
 data = pd.read_csv("creditcard.csv")
 
 # Print some data description
-print(data.shape)
+# print(data.shape)
 
 # Check the number of valid and fraud transactions
 validTransactions = data[data['Class'] == 0]
@@ -32,8 +33,6 @@ print(f'Fraud cases: {len(fraudTransactions)}')
 # The output is Class
 x = data.iloc[:, 1:30].values
 y = data.iloc[:, -1].values
-print(x.shape)
-print(y.shape)
 
 # Standardize data
 x = (x - np.mean(x))/np.std(x)

@@ -7,7 +7,7 @@ def decisionTree(x_train, x_test, y_train, y_test):
 
     # Make decision tree model
     start = time()
-    decisionTree = tree.DecisionTreeClassifier(criterion = "gini", random_state = 100, max_depth = 3, max_leaf_nodes = 5)
+    decisionTree = tree.DecisionTreeClassifier()
     decisionTree.fit(x_train, y_train)
     
     # Predict 
