@@ -2,5 +2,6 @@
 001_CreditCardFraudDetection/classifiers/__pycache__
 001_CreditCardFraudDetection/creditcard.csv
 002_DiseasePrediction/__pycache__
+002_DiseasePrediction/classifiers/__pycache__
 002_DiseasePrediction/Training.csv
 002_DiseasePrediction/Testing.csv 
