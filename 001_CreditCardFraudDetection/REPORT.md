@@ -26,40 +26,40 @@ Confusion matrix:
  [   66     9]]  
 
 
-Time spent is 1.5493683815002441 seconds.  
-Number of errors for Logistic Regression model is 59  
+Time spent is 0.8287839889526367 seconds.  
+Number of errors for Logistic Regression model is 39  
 Logistic Regression: Accuracy is 0.999  
-Logistic Regression: Precision is 0.944  
-Logistic Regression: Recall is 0.227  
-Logistic Regression: F1-Score is 0.366  
-Logistic Regression: Matthews correlation coefficient is 0.462  
+Logistic Regression: Precision is 0.875  
+Logistic Regression: Recall is 0.560  
+Logistic Regression: F1-Score is 0.683  
+Logistic Regression: Matthews correlation coefficient is 0.700  
 Confusion matrix:  
- [[56886     1]  
- [   58    17]]  
+ [[56881     6]  
+ [   33    42]]   
 
 
-Time spent is 15.130817651748657 seconds.  
-Number of errors for Decision Tree model is 51  
+Time spent is 13.57843804359436 seconds.  
+Number of errors for Decision Tree model is 56  
 Decision Tree: Accuracy is 0.999  
-Decision Tree: Precision is 0.654  
-Decision Tree: Recall is 0.680  
-Decision Tree: F1-Score is 0.667  
-Decision Tree: Matthews correlation coefficient is 0.666  
+Decision Tree: Precision is 0.617  
+Decision Tree: Recall is 0.667  
+Decision Tree: F1-Score is 0.641  
+Decision Tree: Matthews correlation coefficient is 0.641  
 Confusion matrix:  
- [[56860    27]  
- [   24    51]]  
+ [[56856    31]  
+ [   25    50]]   
 
 
-Time spent is 13.854992389678955 seconds.  
-Number of errors for kNN model is 37  
-kNN: Accuracy is 0.999  
-kNN: Precision is 0.952  
-kNN: Recall is 0.533  
-kNN: F1-Score is 0.684  
-kNN: Matthews correlation coefficient is 0.712  
+Time spent is 9.292028427124023 seconds.  
+Number of errors for kNN model is 23  
+kNN: Accuracy is 1.000  
+kNN: Precision is 0.948  
+kNN: Recall is 0.733  
+kNN: F1-Score is 0.827  
+kNN: Matthews correlation coefficient is 0.834  
 Confusion matrix:  
- [[56885     2]  
- [   35    40]]  
+ [[56884     3]  
+ [   20    55]]   
 
 
 Time spent is 163.76197052001953 seconds.  
@@ -74,25 +74,25 @@ Confusion matrix:
  [   23    52]]  
 
 
-Time spent is 28.73442316055298 seconds.  
-Number of errors for linear Support Vector Machine model is 24  
-linear Support Vector Machine: Accuracy is 1.000  
-linear Support Vector Machine: Precision is 1.000  
-linear Support Vector Machine: Recall is 0.680  
-linear Support Vector Machine: F1-Score is 0.810  
-linear Support Vector Machine: Matthews correlation coefficient is 0.824  
+Time spent is 32.01217436790466 seconds.  
+Number of errors for Linear SVM model is 42  
+Linear SVM: Accuracy is 0.999  
+Linear SVM: Precision is 1.000  
+Linear SVM: Recall is 0.440  
+Linear SVM: F1-Score is 0.611  
+Linear SVM: Matthews correlation coefficient is 0.663  
 Confusion matrix:  
  [[56887     0]  
- [   24    51]]  
+ [   42    33]]  
 
 
-Time spent is 295.2604675292969 seconds.  
-Number of errors for rbf Support Vector Machine model is 24  
-rbf Support Vector Machine: Accuracy is 1.000  
-rbf Support Vector Machine: Precision is 1.000  
-rbf Support Vector Machine: Recall is 0.680  
-rbf Support Vector Machine: F1-Score is 0.810  
-rbf Support Vector Machine: Matthews correlation coefficient is 0.824  
+Time spent is 293.95291686058044 seconds.  
+Number of errors for rbf SVM model is 31  
+rbf SVM: Accuracy is 0.999  
+rbf SVM: Precision is 0.978  
+rbf SVM: Recall is 0.600  
+rbf SVM: F1-Score is 0.744  
+rbf SVM: Matthews correlation coefficient is 0.766  
 Confusion matrix:  
- [[56887     0]  
- [   24    51]]  
+ [[56886     1]  
+ [   30    45]]  

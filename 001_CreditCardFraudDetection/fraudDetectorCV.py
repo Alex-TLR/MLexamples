@@ -6,6 +6,9 @@ Classification of transactions using different classifiers.
 Cross-validation analysis.
 '''
 
+import sys
+sys.path.append('../')
+
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler

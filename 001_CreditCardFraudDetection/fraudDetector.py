@@ -7,6 +7,10 @@ All classifiers use default parameters.
 The shuffle for train/test split is disabled. Every new run should give the same results.
 '''
 
+import sys
+import os
+sys.path.append('../')
+
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
