@@ -25,7 +25,7 @@ def kNearestNeighbors(x_train, x_test, y_train, y_test):
 
 def kNearestNeighborsCV(x, y):
 
-    scores = ['precision_micro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
+    scores = ['average_precision']
 
     # Make logistic regression model
     start = time()

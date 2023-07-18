@@ -8,7 +8,6 @@ The shuffle for train/test split is disabled. Every new run should give the same
 '''
 
 import sys
-import os
 sys.path.append('../')
 
 import pandas as pd
