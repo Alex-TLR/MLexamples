@@ -63,4 +63,6 @@ knn.kNearestNeighbors(x_train, x_test, y_train, y_test)
 randomForest.randomForest(x_train, x_test, y_train, y_test)
 
 # support Vector Machine
-supportVectorMachine.supportVectorMachine(x_train, x_test, y_train, y_test)
+supportVectorMachine.supportVectorMachineLinear(x_train, x_test, y_train, y_test)
+
+supportVectorMachine.supportVectorMachineRbf(x_train, x_test, y_train, y_test)

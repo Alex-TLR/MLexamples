@@ -1,5 +1,6 @@
 from sklearn import tree
 from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import cross_validate
 import printResults
 from time import time 
 
@@ -40,7 +41,6 @@ def dt(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes):
     print("\n")
     return None 
 
-
 def dtCriterion(x_train, x_test, y_train, c):
     
     decisionTree = tree.DecisionTreeClassifier(criterion = c)
@@ -63,3 +63,19 @@ def dtMaxLeafNodes(x_train, x_test, y_train, c, maxDepth, maxLeafNodes):
     decisionTree.fit(x_train, y_train)
     y_pred = decisionTree.predict(x_test)
     return y_pred
+
+
+def decisionTreeCV(x, y):
+
+    scores = ['precision_micro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
+
+    # Make logistic regression model
+    start = time()
+    decisionTree = tree.DecisionTreeClassifier()
+    scores = cross_validate(decisionTree, x, y, scoring = scores, cv = 5)
+    stop = time()
+    print("Decision trees:")
+    print(f'Time spent is {stop - start} seconds.', sep="")
+    AP = scores['test_average_precision']
+    return AP 
+

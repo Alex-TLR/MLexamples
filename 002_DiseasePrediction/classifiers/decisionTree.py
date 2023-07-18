@@ -1,5 +1,6 @@
 from sklearn import tree
 from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import cross_validate
 import printResults
 from time import time 
 
@@ -20,7 +21,6 @@ def decisionTree(x_train, x_test, y_train, y_test):
     # print('Confusion matrix:\n', confusion_matrix(y_test, y_pred, ))
     print("\n")
     return None 
-
 
 def dt(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes):
     

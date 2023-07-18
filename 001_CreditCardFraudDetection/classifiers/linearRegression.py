@@ -1,5 +1,6 @@
 from sklearn import linear_model
 from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import cross_validate
 import printResults
 from time import time
 
@@ -23,6 +24,19 @@ def linearRegression(x_train, x_test, y_train, y_test):
     return None 
 
     
-# def findOptimalParameters(x_train, x_test, y_train, y_test):
+# def linearRegressionCV(x, y):
 
+#     scores = ['precision_micro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
+    
+#     # Make linear regression model
+#     start = time()
 #     LinearRegression = linear_model.LinearRegression()
+#     scores = cross_validate(LinearRegression, x, y, scoring = scores)
+#     stop = time()
+# #     print(f'Time spent is {stop - start} seconds.')
+
+# #     # Print report
+# #     printResults.printResults(y_test, y_pred, "Linear Regression")
+# #     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
+# #     print("\n")
+# #     return None 
