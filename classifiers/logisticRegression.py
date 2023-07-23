@@ -1,7 +1,10 @@
+import sys
+sys.path.append('../')
+
 from sklearn import linear_model
 from sklearn.metrics import confusion_matrix, get_scorer_names
 from sklearn.model_selection import cross_validate
-import printResults
+from classifiers import printResults
 from time import time
 
 def logisticRegression(x_train, x_test, y_train, y_test):

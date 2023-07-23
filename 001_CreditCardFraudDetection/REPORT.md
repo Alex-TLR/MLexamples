@@ -6,12 +6,10 @@ Values V1, V2, V3 ... V28, and Amount are input, and Class is output. Since Clas
 
 The report for the run with non-shuffled train/test split and standardized input data:
 
-
 Valid cases: 284315  
 Fraud cases: 492  
 Number of test samples 56962  
-Valid test cases: 56887  
-Fraud test cases: 75  
+
 
 | Method             | Accuracy | Precision | Recall | F1-Score | MCC   | Time (sec) | Number of errors |
 |--------------------|:--------:|:---------:|:------:|:--------:|:-----:|:----------:|:----------------:|
@@ -27,13 +25,17 @@ MCC is Matthew's correlation coefficient
 
 5fold cross-validation
 
-| Method             | mAP      | 
-|--------------------|:--------:|
-|Linear regression   |          | 
-|Logistic regression | 0.740    | 
-|Decision trees      | 0.441    | 
-|k Nearest Neighbors | 0.685    | 
-|Random forest       | 0.774    | 
-|linear SVM          | 0.656    |
-|rbf SVM             | 0.699    |
+| Method             | mAP (default) | mAP (optimized) |
+|--------------------|:-------------:|:---------------:|
+|Linear regression   |               |                 |   
+|Logistic regression | 0.740         |                 |
+|Decision trees      | 0.426         | 0.722           |
+|k Nearest Neighbors | 0.685         | 0.694           |
+|Random forest       | 0.791         |                 |   
+|linear SVM          | 0.656         |                 | 
+|rbf SVM             | 0.699         |                 | 
 
+mAP (default) is obtained with classifiers with defualt parametr values from sklearn.
+mAP (optimized) is obtained with classifiers after weak parameter optimization:
+DecisionTree - criterion = 'gini', max_depth = 4, max_leaf_nodes = 10 
+k Nearest Neighbors - n_neighbors = 7

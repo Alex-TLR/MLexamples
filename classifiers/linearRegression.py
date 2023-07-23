@@ -1,7 +1,10 @@
+import sys
+sys.path.append('../')
+
 from sklearn import linear_model
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import cross_validate
-import printResults
+from classifiers import printResults
 from time import time
 
 def linearRegression(x_train, x_test, y_train, y_test):

@@ -1,7 +1,10 @@
+import sys
+sys.path.append('../')
+
 from sklearn import tree
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import cross_validate
-import printResults
+from classifiers import printResults
 from time import time 
 
 def decisionTree(x_train, x_test, y_train, y_test):
@@ -23,7 +26,7 @@ def decisionTree(x_train, x_test, y_train, y_test):
     return None 
 
 
-def dt(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes):
+def dtOptimized(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes):
     
     # Make decision tree model
     start = time()
@@ -75,6 +78,21 @@ def decisionTreeCV(x, y):
     scores = cross_validate(decisionTree, x, y, scoring = scores, cv = 5)
     stop = time()
     print("Decision trees:")
+    print(f'Time spent is {stop - start} seconds.', sep="")
+    AP = scores['test_average_precision']
+    return AP 
+
+
+def decisionTreeCVOptimal(x, y):
+
+    scores = ['precision_micro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
+
+    # Make logistic regression model
+    start = time()
+    decisionTree = tree.DecisionTreeClassifier(criterion = 'gini', max_depth = 4, max_leaf_nodes = 10)
+    scores = cross_validate(decisionTree, x, y, scoring = scores, cv = 5)
+    stop = time()
+    print("Decision trees (best performance):")
     print(f'Time spent is {stop - start} seconds.', sep="")
     AP = scores['test_average_precision']
     return AP 

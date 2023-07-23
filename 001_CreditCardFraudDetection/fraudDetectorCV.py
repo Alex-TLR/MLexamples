@@ -51,8 +51,18 @@ ap2 = decisionTree.decisionTreeCV(x, y)
 map2 = np.average(ap2)
 print(f'mAP is: {map2:.3f}\n')
 
+# Decision trees
+ap2 = decisionTree.decisionTreeCVOptimal(x, y)
+map2 = np.average(ap2)
+print(f'mAP is: {map2:.3f}\n')
+
 # kNN 
 ap3 = knn.kNearestNeighborsCV(x, y)
+map3 = np.average(ap3)
+print(f'mAP is: {map3:.3f}\n')
+
+# kNN 
+ap3 = knn.kNearestNeighborsCVOptimal(x, y)
 map3 = np.average(ap3)
 print(f'mAP is: {map3:.3f}\n')
 

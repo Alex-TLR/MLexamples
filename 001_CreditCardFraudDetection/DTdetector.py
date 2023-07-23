@@ -5,6 +5,9 @@ Date: 10/07/2023
 Try to optmize Decision Tree performance.
 '''
 
+import sys
+sys.path.append('../')
+
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -36,7 +39,6 @@ print(f'Valid test cases: {len(validTransactionsTest)}')
 print(f'Fraud test cases: {len(fraudTransactionsTest)}')
 print("\n")
 
-# Number of 
 # Decision trees with different criterions
 nErrors = []
 for i in range(len(methodList)):
@@ -56,7 +58,7 @@ for i in range(1, 10):
     # print(result)
     nErrors.append(result)    
 
-maxDepth = nErrors.index(min(nErrors))
+maxDepth = nErrors.index(min(nErrors)) + 1
 print(f'Best max_depth is {maxDepth}.')
 
 nErrors = []
@@ -70,4 +72,4 @@ maxLeafNodes = (nErrors.index(min(nErrors)) + 1)*5
 print(f'Best max_leaf_nodes is {maxLeafNodes}.')
 
 print("Best performance:")
-decisionTree.dt(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes)
+decisionTree.dtOptimized(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes)
