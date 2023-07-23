@@ -1,5 +1,6 @@
 from sklearn import linear_model
 from sklearn.metrics import confusion_matrix
+import numpy as np
 import printResults
 from time import time
 

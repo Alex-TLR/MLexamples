@@ -18,7 +18,7 @@ def decisionTree(x_train, x_test, y_train, y_test):
 
     # Print report 
     printResults.printResults(y_test, y_pred, "Decision Tree")
-    # print('Confusion matrix:\n', confusion_matrix(y_test, y_pred, ))
+    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred, ))
     print("\n")
     return None 
 
