@@ -52,7 +52,7 @@ y_train_ohe = ohe.fit_transform(y_train).toarray()
 y_test_ohe = ohe.fit_transform(y_test).toarray()
 
 # Linear regression
-linearRegression.linearRegression(x_train, x_test, y_train_ohe, y_test_ohe, 1)
+linearRegression.linearRegressionOhe(x_train, x_test, y_train_ohe, y_test_ohe)
 
 # Logistic regression
 logisticRegression.logisticRegression(x_train, x_test, y_train_ord, y_test_ord)

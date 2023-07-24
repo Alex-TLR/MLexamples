@@ -51,21 +51,21 @@ print(f'Fraud test cases: {len(fraudTransactionsTest)}')
 print("\n")
 
 # Linear regression
-linearRegression.linearRegression(x_train, x_test, y_train, y_test, 0)
+linearRegression.linearRegression(x_train, x_test, y_train, y_test)
 
-# # Logistic regression
-# logisticRegression.logisticRegression(x_train, x_test, y_train, y_test)
+# Logistic regression
+logisticRegression.logisticRegression(x_train, x_test, y_train, y_test)
 
-# # Decision trees
-# decisionTree.decisionTree(x_train, x_test, y_train, y_test)
+# Decision trees
+decisionTree.decisionTree(x_train, x_test, y_train, y_test)
 
-# # KNN
-# knn.kNearestNeighbors(x_train, x_test, y_train, y_test)
+# KNN
+knn.kNearestNeighbors(x_train, x_test, y_train, y_test)
 
-# # Random forest
-# randomForest.randomForest(x_train, x_test, y_train, y_test)
+# Random forest
+randomForest.randomForest(x_train, x_test, y_train, y_test)
 
-# # support Vector Machine
-# supportVectorMachine.supportVectorMachineLinear(x_train, x_test, y_train, y_test)
+# support Vector Machine
+supportVectorMachine.supportVectorMachineLinear(x_train, x_test, y_train, y_test)
 
-# supportVectorMachine.supportVectorMachineRbf(x_train, x_test, y_train, y_test)
+supportVectorMachine.supportVectorMachineRbf(x_train, x_test, y_train, y_test)
