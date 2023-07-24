@@ -3,11 +3,11 @@ sys.path.append('../')
 
 from sklearn import linear_model
 from sklearn.metrics import confusion_matrix
-from sklearn.model_selection import cross_validate
+import numpy as np
 from classifiers import printResults
 from time import time
 
-def linearRegression(x_train, x_test, y_train, y_test):
+def linearRegression(x_train, x_test, y_train, y_test, ohe):
 
     # Make linear regression model
     start = time()
@@ -16,9 +16,20 @@ def linearRegression(x_train, x_test, y_train, y_test):
     
     # Predict 
     y_pred = LinRegModel.predict(x_test)
-    y_pred = [0 if i <= 0.5 else 1 for i in y_pred]
+    if (ohe == 0):
+        y_pred = [0 if i <= 0.5 else 1 for i in y_pred]
+    elif (ohe == 1):
+        for i in range(len(y_pred)):
+            y_pred[i] = [0 if i <= 0.5 else 1 for i in y_pred[i]]
     stop = time()
     print(f'Time spent is {stop - start} seconds.')
+
+    # Reverse one hot encoding (if necessary)
+    if (ohe == 1):
+        y_predN = np.argmax(y_pred, axis = 1)
+        y_testN = np.argmax(y_test, axis = 1)
+        y_pred = y_predN 
+        y_test = y_testN
 
     # Print report
     printResults.printResults(y_test, y_pred, "Linear Regression")
@@ -26,20 +37,3 @@ def linearRegression(x_train, x_test, y_train, y_test):
     print("\n")
     return None 
 
-    
-# def linearRegressionCV(x, y):
-
-#     scores = ['precision_micro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
-    
-#     # Make linear regression model
-#     start = time()
-#     LinearRegression = linear_model.LinearRegression()
-#     scores = cross_validate(LinearRegression, x, y, scoring = scores)
-#     stop = time()
-# #     print(f'Time spent is {stop - start} seconds.')
-
-# #     # Print report
-# #     printResults.printResults(y_test, y_pred, "Linear Regression")
-# #     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
-# #     print("\n")
-# #     return None 
