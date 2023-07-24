@@ -26,6 +26,25 @@ def randomForest(x_train, x_test, y_train, y_test):
     return None 
 
 
+def randomForestOptimized(x_train, x_test, y_train, y_test, n):
+
+    # Make random forest model
+    start = time()
+    randomForestClassifier = RandomForestClassifier(n_estimators = n)
+    randomForestClassifier.fit(x_train, y_train)
+    
+    # Predict
+    y_pred = randomForestClassifier.predict(x_test)
+    stop = time()
+    print(f'Time spent is {stop - start} seconds.')
+
+    # Print report 
+    printResults.printResults(y_test, y_pred, "Random Forest")
+    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
+    print("\n")
+    return None 
+
+
 def randomForestCV(x, y):
 
     scores = ['precision_micro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
@@ -39,3 +58,11 @@ def randomForestCV(x, y):
     print(f'Time spent is {stop - start} seconds.', sep='')
     AP = scores['test_average_precision']
     return AP     
+
+
+def rfNumberOfEstimators(x_train, x_test, y_train, n):
+
+    randomForestClassifier = RandomForestClassifier(n_estimators = n)
+    randomForestClassifier.fit(x_train, y_train)
+    y_pred = randomForestClassifier.predict(x_test)
+    return y_pred

@@ -18,6 +18,7 @@ from classifiers import decisionTree
 from classifiers import supportVectorMachine
 from classifiers import knn 
 from classifiers import randomForest
+from classifiers import gaussianNB
 
 # Import data
 data = pd.read_csv("creditcard.csv")
@@ -55,6 +56,11 @@ print(f'mAP is: {map2:.3f}\n')
 ap2 = decisionTree.decisionTreeCVOptimal(x, y)
 map2 = np.average(ap2)
 print(f'mAP is: {map2:.3f}\n')
+
+# # GaussianNB
+# ap = gaussianNB.GaussianNaiveBayesCV(x, y)
+# map = np.average(ap)
+# print(f'mAP is: {map:.3f}\n')
 
 # kNN 
 ap3 = knn.kNearestNeighborsCV(x, y)

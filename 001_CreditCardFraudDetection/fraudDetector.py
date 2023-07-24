@@ -20,6 +20,7 @@ from classifiers import decisionTree
 from classifiers import supportVectorMachine
 from classifiers import knn 
 from classifiers import randomForest
+from classifiers import gaussianNB
 
 # Import data
 data = pd.read_csv("creditcard.csv")
@@ -58,6 +59,9 @@ logisticRegression.logisticRegression(x_train, x_test, y_train, y_test)
 
 # Decision trees
 decisionTree.decisionTree(x_train, x_test, y_train, y_test)
+
+# # Gaussian Navie Bayes
+# gaussianNB.GaussianNaiveBayes(x_train, x_test, y_train, y_test)
 
 # KNN
 knn.kNearestNeighbors(x_train, x_test, y_train, y_test)

@@ -12,7 +12,7 @@ sys.path.append('../')
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, OrdinalEncoder
-from classifiers import linearRegression, logisticRegression, decisionTree, randomForest, knn, supportVectorMachine
+from classifiers import linearRegression, logisticRegression, decisionTree, randomForest, knn, supportVectorMachine, gaussianNB
 
 # Encoders
 ohe = OneHotEncoder()
@@ -59,6 +59,9 @@ logisticRegression.logisticRegression(x_train, x_test, y_train_ord, y_test_ord)
 
 # Decision trees
 decisionTree.decisionTree(x_train, x_test, y_train_ord, y_test_ord)
+
+# Gaussian Navie Bayes
+gaussianNB.GaussianNaiveBayes(x_train, x_test, y_train_ord, y_test_ord)
 
 # KNN
 knn.kNearestNeighbors(x_train, x_test, y_train_ord, y_test_ord)
