@@ -7,7 +7,7 @@ from sklearn.model_selection import cross_validate
 from classifiers import printResults
 from time import time 
 
-def decisionTree(x_train, x_test, y_train, y_test):
+def decisionTreeBinary(x_train, x_test, y_train, y_test):
 
     # Make decision tree model
     start = time()
@@ -20,7 +20,26 @@ def decisionTree(x_train, x_test, y_train, y_test):
     print(f'Time spent is {stop - start} seconds.')
 
     # Print report 
-    printResults.printResults(y_test, y_pred, "Decision Tree")
+    printResults.printResults(y_test, y_pred, "Decision Tree", 'binary')
+    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
+    print("\n")
+    return None 
+
+
+def decisionTreeMulticlass(x_train, x_test, y_train, y_test):
+
+    # Make decision tree model
+    start = time()
+    decisionTree = tree.DecisionTreeClassifier()
+    decisionTree.fit(x_train, y_train)
+    
+    # Predict 
+    y_pred = decisionTree.predict(x_test)
+    stop = time()
+    print(f'Time spent is {stop - start} seconds.')
+
+    # Print report 
+    printResults.printResults(y_test, y_pred, "Decision Tree", 'macro')
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None 

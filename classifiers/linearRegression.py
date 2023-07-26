@@ -7,9 +7,9 @@ import numpy as np
 from classifiers import printResults
 from time import time
 
-def linearRegression(x_train, x_test, y_train, y_test):
+def linearRegressionBinary(x_train, x_test, y_train, y_test):
 
-    # Classification using Linear regression
+    # Binary classification using Linear regression
     # Make linear regression model
     start = time()
     LinearRegression = linear_model.LinearRegression()
@@ -22,13 +22,13 @@ def linearRegression(x_train, x_test, y_train, y_test):
     print(f'Time spent is {stop - start} seconds.')
 
     # Print report
-    printResults.printResults(y_test, y_pred, "Linear Regression")
+    printResults.printResults(y_test, y_pred, "Linear Regression", 'binary')
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None 
 
 
-def linearRegressionOhe(x_train, x_test, y_train, y_test):
+def linearRegressionMulticlass(x_train, x_test, y_train, y_test):
 
     # Classification using Linear regression, with One hot encoding of output
     # Make linear regression model
@@ -50,7 +50,7 @@ def linearRegressionOhe(x_train, x_test, y_train, y_test):
     y_test = y_testN
 
     # Print report
-    printResults.printResults(y_test, y_pred, "Linear Regression")
+    printResults.printResults(y_test, y_pred, "Linear Regression", 'macro')
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None 

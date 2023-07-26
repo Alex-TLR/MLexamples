@@ -21,6 +21,7 @@ from classifiers import supportVectorMachine
 from classifiers import knn 
 from classifiers import randomForest
 from classifiers import gaussianNB
+from classifiers import FCN
 
 # Import data
 data = pd.read_csv("creditcard.csv")
@@ -52,24 +53,29 @@ print(f'Fraud test cases: {len(fraudTransactionsTest)}')
 print("\n")
 
 # Linear regression
-linearRegression.linearRegression(x_train, x_test, y_train, y_test)
+linearRegression.linearRegressionBinary(x_train, x_test, y_train, y_test)
 
 # Logistic regression
-logisticRegression.logisticRegression(x_train, x_test, y_train, y_test)
+logisticRegression.logisticRegressionBinary(x_train, x_test, y_train, y_test)
 
 # Decision trees
-decisionTree.decisionTree(x_train, x_test, y_train, y_test)
+decisionTree.decisionTreeBinary(x_train, x_test, y_train, y_test)
 
-# # Gaussian Navie Bayes
-# gaussianNB.GaussianNaiveBayes(x_train, x_test, y_train, y_test)
+# # # Gaussian Navie Bayes
+# # gaussianNB.GaussianNaiveBayes(x_train, x_test, y_train, y_test)
 
 # KNN
-knn.kNearestNeighbors(x_train, x_test, y_train, y_test)
+knn.kNearestNeighborsBinary(x_train, x_test, y_train, y_test)
 
 # Random forest
-randomForest.randomForest(x_train, x_test, y_train, y_test)
+randomForest.randomForestBinary(x_train, x_test, y_train, y_test)
 
 # support Vector Machine
-supportVectorMachine.supportVectorMachineLinear(x_train, x_test, y_train, y_test)
+supportVectorMachine.supportVectorMachineLinearBinary(x_train, x_test, y_train, y_test)
 
-supportVectorMachine.supportVectorMachineRbf(x_train, x_test, y_train, y_test)
+supportVectorMachine.supportVectorMachineRbfBinary(x_train, x_test, y_train, y_test)
+
+# FCN
+model = FCN.FullConnectedNetwork1(29)
+model = FCN.TrainFCN(x_train, y_train, model, 0)
+FCN.PredictFCN(x_test, y_test, model)

@@ -7,7 +7,7 @@ from sklearn.model_selection import cross_validate
 from classifiers import printResults
 from time import time
 
-def supportVectorMachineLinear(x_train, x_test, y_train, y_test):
+def supportVectorMachineLinearBinary(x_train, x_test, y_train, y_test):
 
     # Make linear Support Vector Machine model
     start = time()
@@ -15,18 +15,37 @@ def supportVectorMachineLinear(x_train, x_test, y_train, y_test):
     svmLinear.fit(x_train, y_train)
     
     # Predict 
-    y_pred1 = svmLinear.predict(x_test)
+    y_pred = svmLinear.predict(x_test)
     stop = time()
     print(f'Time spent is {stop - start} seconds.')
 
     # Print report 
-    printResults.printResults(y_test, y_pred1, "Linear SVM")
-    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred1))
+    printResults.printResults(y_test, y_pred, "Linear SVM", 'binary')
+    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None 
 
 
-def supportVectorMachineRbf(x_train, x_test, y_train, y_test):
+def supportVectorMachineLinearMulticlass(x_train, x_test, y_train, y_test):
+
+    # Make linear Support Vector Machine model
+    start = time()
+    svmLinear = svm.SVC(kernel='linear', max_iter = 10000)
+    svmLinear.fit(x_train, y_train)
+    
+    # Predict 
+    y_pred = svmLinear.predict(x_test)
+    stop = time()
+    print(f'Time spent is {stop - start} seconds.')
+
+    # Print report 
+    printResults.printResults(y_test, y_pred, "Linear SVM", 'macro')
+    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
+    print("\n")
+    return None 
+
+
+def supportVectorMachineRbfBinary(x_train, x_test, y_train, y_test):
 
     # Make non-linear Support Vector Machine model
     start = time()
@@ -34,13 +53,13 @@ def supportVectorMachineRbf(x_train, x_test, y_train, y_test):
     svmNonLinear.fit(x_train, y_train)
     
     # Predict 
-    y_pred2 = svmNonLinear.predict(x_test)
+    y_pred = svmNonLinear.predict(x_test)
     stop = time()
     print(f'Time spent is {stop - start} seconds.')
 
     # Print report 
-    printResults.printResults(y_test, y_pred2, "rbf SVM")
-    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred2))
+    printResults.printResults(y_test, y_pred, "rbf SVM", 'binary')
+    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None 
 

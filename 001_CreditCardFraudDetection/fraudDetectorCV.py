@@ -19,6 +19,7 @@ from classifiers import supportVectorMachine
 from classifiers import knn 
 from classifiers import randomForest
 from classifiers import gaussianNB
+from classifiers import FCN
 
 # Import data
 data = pd.read_csv("creditcard.csv")
@@ -86,3 +87,5 @@ print(f'mAP is: {map5:.3}\n')
 ap6 = supportVectorMachine.supportVectorMachineRbfCV(x, y)
 map6 = np.average(ap6)
 print(f'mAP is: {map6:.3}\n')
+
+# FCN model1

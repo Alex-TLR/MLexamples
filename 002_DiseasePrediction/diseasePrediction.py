@@ -52,22 +52,22 @@ y_train_ohe = ohe.fit_transform(y_train).toarray()
 y_test_ohe = ohe.fit_transform(y_test).toarray()
 
 # Linear regression
-linearRegression.linearRegressionOhe(x_train, x_test, y_train_ohe, y_test_ohe)
+linearRegression.linearRegressionMulticlass(x_train, x_test, y_train_ohe, y_test_ohe)
 
 # Logistic regression
-logisticRegression.logisticRegression(x_train, x_test, y_train_ord, y_test_ord)
+logisticRegression.logisticRegressionMulticlass(x_train, x_test, y_train_ord, y_test_ord)
 
 # Decision trees
-decisionTree.decisionTree(x_train, x_test, y_train_ord, y_test_ord)
+decisionTree.decisionTreeMulticlass(x_train, x_test, y_train_ord, y_test_ord)
 
-# Gaussian Navie Bayes
-gaussianNB.GaussianNaiveBayes(x_train, x_test, y_train_ord, y_test_ord)
+# # Gaussian Navie Bayes
+# gaussianNB.GaussianNaiveBayes(x_train, x_test, y_train_ord, y_test_ord)
 
 # KNN
-knn.kNearestNeighbors(x_train, x_test, y_train_ord, y_test_ord)
+knn.kNearestNeighborsMulticlass(x_train, x_test, y_train_ord, y_test_ord)
 
 # Random forest
-randomForest.randomForest(x_train, x_test, y_train_ord, y_test_ord)
+randomForest.randomForestMulticlass(x_train, x_test, y_train_ord, y_test_ord)
 
 # support Vector Machine
-supportVectorMachine.supportVectorMachineLinear(x_train, x_test, y_train_ord, y_test_ord)
+supportVectorMachine.supportVectorMachineLinearMulticlass(x_train, x_test, y_train_ord, y_test_ord)

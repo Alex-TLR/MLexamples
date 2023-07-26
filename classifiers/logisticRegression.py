@@ -7,8 +7,9 @@ from sklearn.model_selection import cross_validate
 from classifiers import printResults
 from time import time
 
-def logisticRegression(x_train, x_test, y_train, y_test):
+def logisticRegressionBinary(x_train, x_test, y_train, y_test):
 
+    # Binary classification using logistic regression
     # Make logistic regression model
     start = time()
     LogRegression = linear_model.LogisticRegression()
@@ -20,7 +21,27 @@ def logisticRegression(x_train, x_test, y_train, y_test):
     print(f'Time spent is {stop - start} seconds.')
 
     # Print report 
-    printResults.printResults(y_test, y_pred, "Logistic Regression")
+    printResults.printResults(y_test, y_pred, "Logistic Regression", 'binary')
+    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
+    print("\n")
+    return None 
+
+
+def logisticRegressionMulticlass(x_train, x_test, y_train, y_test):
+
+    # Multiclass classification using logistic regression
+    # Make logistic regression model
+    start = time()
+    LogRegression = linear_model.LogisticRegression()
+    LogRegModel = LogRegression.fit(x_train, y_train)
+    
+    # Predict
+    y_pred = LogRegModel.predict(x_test)
+    stop = time()
+    print(f'Time spent is {stop - start} seconds.')
+
+    # Print report 
+    printResults.printResults(y_test, y_pred, "Logistic Regression", 'macro')
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None 

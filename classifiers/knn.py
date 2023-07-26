@@ -8,7 +8,7 @@ from classifiers import printResults
 from time import time
 
 
-def kNearestNeighbors(x_train, x_test, y_train, y_test):
+def kNearestNeighborsBinary(x_train, x_test, y_train, y_test):
 
     # Make KNN model
     start = time()
@@ -21,7 +21,26 @@ def kNearestNeighbors(x_train, x_test, y_train, y_test):
     print(f'Time spent is {stop - start} seconds.')
 
     # Print report
-    printResults.printResults(y_test, y_pred, "kNN")
+    printResults.printResults(y_test, y_pred, "kNN", 'binary')
+    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
+    print("\n")
+    return None
+
+
+def kNearestNeighborsMulticlass(x_train, x_test, y_train, y_test):
+
+    # Make KNN model
+    start = time()
+    kNN = KNeighborsClassifier()
+    kNN.fit(x_train, y_train)
+    
+    # Predict
+    y_pred = kNN.predict(x_test)
+    stop = time()
+    print(f'Time spent is {stop - start} seconds.')
+
+    # Print report
+    printResults.printResults(y_test, y_pred, "kNN", 'macro')
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None

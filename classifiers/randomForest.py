@@ -7,7 +7,7 @@ from sklearn.model_selection import cross_validate
 from classifiers import printResults
 from time import time
 
-def randomForest(x_train, x_test, y_train, y_test):
+def randomForestBinary(x_train, x_test, y_train, y_test):
 
     # Make random forest model
     start = time()
@@ -20,7 +20,26 @@ def randomForest(x_train, x_test, y_train, y_test):
     print(f'Time spent is {stop - start} seconds.')
 
     # Print report 
-    printResults.printResults(y_test, y_pred, "Random Forest")
+    printResults.printResults(y_test, y_pred, "Random Forest", 'binary')
+    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
+    print("\n")
+    return None 
+
+
+def randomForestMulticlass(x_train, x_test, y_train, y_test):
+
+    # Make random forest model
+    start = time()
+    randomForestClassifier = RandomForestClassifier()
+    randomForestClassifier.fit(x_train, y_train)
+    
+    # Predict
+    y_pred = randomForestClassifier.predict(x_test)
+    stop = time()
+    print(f'Time spent is {stop - start} seconds.')
+
+    # Print report 
+    printResults.printResults(y_test, y_pred, "Random Forest", 'macro')
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None 
