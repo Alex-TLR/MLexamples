@@ -37,10 +37,11 @@ FCN can give different results for different training runs.
 |Decision trees      | 0.426         | 0.722           |
 |k Nearest Neighbors | 0.685         | 0.694           |
 |Random forest       | 0.791         |                 |   
-|linear SVM          | 0.656         |                 | 
+|linear SVM          | 0.656         | 0.770           | 
 |rbf SVM             | 0.699         |                 | 
 
 mAP (default) is obtained with classifiers with defualt parametr values from sklearn.
 mAP (optimized) is obtained with classifiers after weak parameter optimization:  
 DecisionTree - criterion = 'gini', max_depth = 4, max_leaf_nodes = 10   
 k Nearest Neighbors - n_neighbors = 7  
+linear SVM - C = 0.001  

@@ -45,7 +45,7 @@ def decisionTreeMulticlass(x_train, x_test, y_train, y_test):
     return None 
 
 
-def dtOptimized(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes):
+def dtOptimized(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes, nClass):
     
     # Make decision tree model
     start = time()
@@ -58,7 +58,7 @@ def dtOptimized(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes):
     print(f'Time spent is {stop - start} seconds.')
 
     # Print report 
-    printResults.printResults(y_test, y_pred, "Decision Tree")
+    printResults.printResults(y_test, y_pred, "Decision Tree", nClass)
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None 

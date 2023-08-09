@@ -45,7 +45,7 @@ def randomForestMulticlass(x_train, x_test, y_train, y_test):
     return None 
 
 
-def randomForestOptimized(x_train, x_test, y_train, y_test, n):
+def randomForestOptimized(x_train, x_test, y_train, y_test, n, nClass):
 
     # Make random forest model
     start = time()
@@ -58,7 +58,7 @@ def randomForestOptimized(x_train, x_test, y_train, y_test, n):
     print(f'Time spent is {stop - start} seconds.')
 
     # Print report 
-    printResults.printResults(y_test, y_pred, "Random Forest")
+    printResults.printResults(y_test, y_pred, "Random Forest", nClass)
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None 

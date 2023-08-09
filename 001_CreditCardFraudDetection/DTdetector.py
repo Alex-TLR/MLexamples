@@ -72,4 +72,4 @@ maxLeafNodes = (nErrors.index(min(nErrors)) + 1)*5
 print(f'Best max_leaf_nodes is {maxLeafNodes}.')
 
 print("Best performance:")
-decisionTree.dtOptimized(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes)
+decisionTree.dtOptimized(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes, 'binary')

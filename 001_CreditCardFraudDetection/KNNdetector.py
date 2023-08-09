@@ -70,4 +70,4 @@ numOfNeighbors = nErrors.index(min(nErrors))*2 + 1
 print(f'Best number of neighbors is {numOfNeighbors}.')
 
 print("Best performance:")
-knn.knnOptimized(x_train, x_test, y_train, y_test, numOfNeighbors)
+knn.knnOptimized(x_train, x_test, y_train, y_test, numOfNeighbors, 'binary')

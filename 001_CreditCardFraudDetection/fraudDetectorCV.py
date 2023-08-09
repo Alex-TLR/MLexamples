@@ -43,48 +43,58 @@ y = data.iloc[:, -1].values
 scaler = StandardScaler()
 x = scaler.fit_transform(x)
 
-# Logistic regression
-ap1 = logisticRegression.logisticRegressionCV(x, y)
-map1 = np.average(ap1)
-print(f'mAP is: {map1:.3f}\n')
+# # Logistic regression
+# ap1 = logisticRegression.logisticRegressionCV(x, y)
+# map1 = np.average(ap1)
+# print(f'mAP is: {map1:.3f}\n')
 
-# Decision trees
-ap2 = decisionTree.decisionTreeCV(x, y)
-map2 = np.average(ap2)
-print(f'mAP is: {map2:.3f}\n')
+# # Decision trees
+# ap2 = decisionTree.decisionTreeCV(x, y)
+# map2 = np.average(ap2)
+# print(f'mAP is: {map2:.3f}\n')
 
-# Decision trees
-ap2 = decisionTree.decisionTreeCVOptimal(x, y)
-map2 = np.average(ap2)
-print(f'mAP is: {map2:.3f}\n')
+# # Decision trees
+# ap2 = decisionTree.decisionTreeCVOptimal(x, y)
+# map2 = np.average(ap2)
+# print(f'mAP is: {map2:.3f}\n')
 
-# # GaussianNB
-# ap = gaussianNB.GaussianNaiveBayesCV(x, y)
-# map = np.average(ap)
-# print(f'mAP is: {map:.3f}\n')
+# # # GaussianNB
+# # ap = gaussianNB.GaussianNaiveBayesCV(x, y)
+# # map = np.average(ap)
+# # print(f'mAP is: {map:.3f}\n')
 
-# kNN 
-ap3 = knn.kNearestNeighborsCV(x, y)
-map3 = np.average(ap3)
-print(f'mAP is: {map3:.3f}\n')
+# # kNN 
+# ap3 = knn.kNearestNeighborsCV(x, y)
+# map3 = np.average(ap3)
+# print(f'mAP is: {map3:.3f}\n')
 
-# kNN 
-ap3 = knn.kNearestNeighborsCVOptimal(x, y)
-map3 = np.average(ap3)
-print(f'mAP is: {map3:.3f}\n')
+# # kNN 
+# ap3 = knn.kNearestNeighborsCVOptimal(x, y)
+# map3 = np.average(ap3)
+# print(f'mAP is: {map3:.3f}\n')
 
-# Random forest
-ap4 = randomForest.randomForestCV(x, y)
-map4 = np.average(ap4)
-print(f'mAP is: {map4:.3}\n')
+# # Random forest
+# ap4 = randomForest.randomForestCV(x, y)
+# map4 = np.average(ap4)
+# print(f'mAP is: {map4:.3}\n')
 
 # linear SVM
-ap5 = supportVectorMachine.supportVectorMachineLinearCV(x, y)
-map5 = np.average(ap5)
-print(f'mAP is: {map5:.3}\n')
+# ap5 = supportVectorMachine.supportVectorMachineCV(x, y, 'linear')
+# map5 = np.average(ap5)
+# print(f'mAP is: {map5:.3}\n')
+
+# # linear SVM
+# ap5 = supportVectorMachine.supportVectorMachineCVOptimal(x, y, 'linear', 0.001)
+# map5 = np.average(ap5)
+# print(f'mAP is: {map5:.3}\n')
 
 # rbf SVM
-ap6 = supportVectorMachine.supportVectorMachineRbfCV(x, y)
+ap6 = supportVectorMachine.supportVectorMachineCV(x, y, 'rbf')
+map6 = np.average(ap6)
+print(f'mAP is: {map6:.3}\n')
+
+# rbf SVM
+ap6 = supportVectorMachine.supportVectorMachineCVOptimal(x, y, 'rbf', 0.1)
 map6 = np.average(ap6)
 print(f'mAP is: {map6:.3}\n')
 

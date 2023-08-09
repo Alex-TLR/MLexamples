@@ -46,7 +46,7 @@ def kNearestNeighborsMulticlass(x_train, x_test, y_train, y_test):
     return None
 
 
-def knnOptimized(x_train, x_test, y_train, y_test, n):
+def knnOptimized(x_train, x_test, y_train, y_test, n, nClass):
 
     # Make KNN model
     start = time()
@@ -59,7 +59,7 @@ def knnOptimized(x_train, x_test, y_train, y_test, n):
     print(f'Time spent is {stop - start} seconds.')
 
     # Print report
-    printResults.printResults(y_test, y_pred, "kNN")
+    printResults.printResults(y_test, y_pred, "kNN", nClass)
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None
@@ -89,7 +89,7 @@ def kNearestNeighborsCVOptimal(x, y):
     kNN = KNeighborsClassifier(n_neighbors = 7)
     scores = cross_validate(kNN, x, y, scoring = scores, cv = 5)
     stop = time()
-    print("k Nearest neighbors:")
+    print("k Nearest neighbors (best performance):")
     print(f'Time spent is {stop - start:.3f} seconds.', sep="")
     AP = scores['test_average_precision']
     return AP 
