@@ -53,3 +53,11 @@ For example:
 |38 | Urinary tract infection                 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 | 38               |
 |39 | Psoriasis                               | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 | 35               |
 |40 | Impetigo                                | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 | 27               |
+
+
+## The first experiment
+In the first experiment, we used train/test split as defined in Training.csv and Testing.csv files. The Testing.csv contains only 42 testing cases, therefore it is not descriptive enough.
+Every kind of classifier will probably have the best possible performance.
+
+## The second experiment
+Both data from Training.csv and Testing.csv files are concatenated, afterwitch the data is split into train/test sets.
