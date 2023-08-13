@@ -7,7 +7,7 @@ from sklearn.model_selection import cross_validate
 from classifiers import printResults
 from time import time
 
-def GaussianNaiveBayes(x_train, x_test, y_train, y_test):
+def GaussianNaiveBayesBinary(x_train, x_test, y_train, y_test):
 
     # Classification using GaussianNaiveBayes
     # Make GaussianNB model
@@ -21,7 +21,27 @@ def GaussianNaiveBayes(x_train, x_test, y_train, y_test):
     print(f'Time spent is {stop - start} seconds.')
 
     # Print report
-    printResults.printResults(y_test, y_pred, "Gaussian Navie Bayes")
+    printResults.printResults(y_test, y_pred, "Gaussian Navie Bayes", 'binary')
+    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
+    print("\n")
+    return None 
+
+
+def GaussianNaiveBayesMulticlass(x_train, x_test, y_train, y_test):
+
+    # Multiclass classification using GaussianNaiveBayes
+    # Make GaussianNB model
+    start = time()
+    GNB = GaussianNB()
+    GNBModel = GNB.fit(x_train, y_train)
+    
+    # Predict 
+    y_pred = GNBModel.predict(x_test)
+    stop = time()
+    print(f'Time spent is {stop - start} seconds.')
+
+    # Print report
+    printResults.printResults(y_test, y_pred, "Gaussian Navie Bayes", 'macro')
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None 

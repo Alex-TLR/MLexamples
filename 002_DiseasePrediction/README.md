@@ -1,12 +1,12 @@
 # Disease prediction
 
-The data contains 132 columns with indicated symptoms, and one column with the prognosis. The symptom columns have numerical values 0 or 1, while prognosis gives description of the prognosis.
+The data contains 132 columns with indicated symptoms and one column with the prognosis. The symptom columns have numerical values 0 or 1, while prognosis gives a description of the prognosis.
 
 There are 41 possible different prognosis, therefore there are N = 41 different possible outputs.
 
-One Hot encoder encodes each output value with the an array of N elements with one element equal to 1 and all other elements equal to 0. The position of the element equal to 1 indicate the corresponding label. 
+One Hot encoder encodes each output value with an array of N elements with one element equal to 1 and all other elements equal to 0. The position of the element equal to 1 indicates the corresponding label.
 
-Ordinary encoder assigns different numerical value to each different category.
+Ordinary encoder assigns different numerical values to each different category.
 
 For example:
 
@@ -61,3 +61,5 @@ Every kind of classifier will probably have the best possible performance.
 
 ## The second experiment
 Both data from Training.csv and Testing.csv files are concatenated, afterwitch the data is split into train/test sets.
+In this experiment train and test are split in 50% manner.
+Except Linear Regression model, all other classifiers has near-perfect or perfect performance.  
