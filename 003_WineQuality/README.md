@@ -54,27 +54,27 @@ Results for run with non-shuffled train/test split and standardized input data:
 Train/test split is done with ratio equal to 0.2 and with the stratification regarding to "quality".
 
 Total 
-3 occurs 10 times 
-4 occurs 53 times 
-5 occurs 681 times 
-6 occurs 638 times 
-7 occurs 199 times 
+3 occurs 10 times,
+4 occurs 53 times, 
+5 occurs 681 times, 
+6 occurs 638 times, 
+7 occurs 199 times, 
 8 occurs 18 times 
 
 Train 
-3 occurs 8 times 
-4 occurs 42 times 
-5 occurs 545 times 
-6 occurs 510 times 
-7 occurs 159 times 
+3 occurs 8 times, 
+4 occurs 42 times, 
+5 occurs 545 times, 
+6 occurs 510 times, 
+7 occurs 159 times, 
 8 occurs 15 times 
 
 Test 
-3 occurs 2 times 
-4 occurs 11 times 
-5 occurs 136 times 
-6 occurs 128 times 
-7 occurs 40 times 
+3 occurs 2 times, 
+4 occurs 11 times, 
+5 occurs 136 times, 
+6 occurs 128 times, 
+7 occurs 40 times, 
 8 occurs 3 times 
 
 All quality parameters are used with different classifiers:
