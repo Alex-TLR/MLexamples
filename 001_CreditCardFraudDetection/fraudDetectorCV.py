@@ -78,7 +78,7 @@ ap4 = randomForest.randomForestCV(x, y)
 map4 = np.average(ap4)
 print(f'mAP is: {map4:.3}\n')
 
-linear SVM
+# linear SVM
 ap5 = supportVectorMachine.supportVectorMachineCV(x, y, 'linear')
 map5 = np.average(ap5)
 print(f'mAP is: {map5:.3}\n')

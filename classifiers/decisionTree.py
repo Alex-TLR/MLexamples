@@ -90,6 +90,7 @@ def dtMaxLeafNodes(x_train, x_test, y_train, c, maxDepth, maxLeafNodes):
 def decisionTreeCV(x, y):
 
     scores = ['precision_micro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
+    # scores = ['precision_micro', 'recall_macro', 'f1_macro', 'matthews_corrcoef']
 
     # Make logistic regression model
     start = time()
@@ -98,8 +99,9 @@ def decisionTreeCV(x, y):
     stop = time()
     print("Decision trees:")
     print(f'Time spent is {stop - start} seconds.', sep="")
-    AP = scores['test_average_precision']
-    return AP 
+    print(scores)
+    # AP = scores['test_average_precision']
+    # return AP 
 
 
 def decisionTreeCVOptimal(x, y):

@@ -1,3 +1,7 @@
+'''
+Support Vector Machine models for classification, i.e. Support Vector Classifiers
+'''
+
 import sys
 sys.path.append('../')
 
@@ -9,7 +13,7 @@ from time import time
 
 def supportVectorMachineLinearBinary(x_train, x_test, y_train, y_test):
 
-    # Make linear Support Vector Machine model
+    # Make linear Support Vector Machine model for classification
     start = time()
     svmLinear = svm.SVC(kernel='linear', max_iter = 10000)
     svmLinear.fit(x_train, y_train)
@@ -101,6 +105,25 @@ def supportVectorMachineRbfBinary(x_train, x_test, y_train, y_test):
 
     # Print report 
     printResults.printResults(y_test, y_pred, "rbf SVM", 'binary')
+    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
+    print("\n")
+    return None 
+
+
+def supportVectorMachineRbfMulticlass(x_train, x_test, y_train, y_test):
+
+    # Make non-linear Support Vector Machine model
+    start = time()
+    svmNonLinear = svm.SVC(kernel='rbf', max_iter = 10000)
+    svmNonLinear.fit(x_train, y_train)
+    
+    # Predict 
+    y_pred = svmNonLinear.predict(x_test)
+    stop = time()
+    print(f'Time spent is {stop - start} seconds.')
+
+    # Print report 
+    printResults.printResults(y_test, y_pred, "rbf SVM", 'macro')
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None 

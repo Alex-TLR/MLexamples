@@ -50,13 +50,14 @@ def logisticRegressionMulticlass(x_train, x_test, y_train, y_test):
 def logisticRegressionCV(x, y):
 
     scores = ['precision_micro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
-
+    # scores = ['precision_micro', 'recall_macro', 'f1_macro', 'matthews_corrcoef']
     # Make logistic regression model
     start = time()
-    LogRegression = linear_model.LogisticRegression()
+    LogRegression = linear_model.LogisticRegression(multi_class = 'multinomial', max_iter = 500)
     scores = cross_validate(LogRegression, x, y, scoring = scores, cv = 5)
     stop = time()
     print("Logistic regression:")
     print(f'Time spent is {stop - start} seconds.', sep='')
+    print(scores)
     AP = scores['test_average_precision']
     return AP 
