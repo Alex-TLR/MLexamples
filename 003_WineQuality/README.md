@@ -1,17 +1,23 @@
 # Wine quality prediction
 
-The data contains 1599 red wine quality parameters (fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, alcohol) together with quality label.
+The data contains 1599 red wine quality parameters (fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, alcohol) and quality labels.
 
 ## The first experiment
-Train/test split is done with ratio equal to 0.2 and with the shuffle equal to False.
+Train/test split is done with a ratio of 0.2 and the shuffle equal to False.
 
 Total 
 3 occurs 10 times 
+
 4 occurs 53 times 
+
 5 occurs 681 times 
+
 6 occurs 638 times 
+
 7 occurs 199 times 
+
 8 occurs 18 times 
+
 
 Train 
 3 occurs 5 times 
