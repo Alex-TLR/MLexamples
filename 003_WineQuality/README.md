@@ -6,35 +6,29 @@ The data contains 1599 red wine quality parameters (fixed acidity, volatile acid
 Train/test split is done with a ratio of 0.2 and the shuffle equal to False.
 
 Total 
-3 occurs 10 times 
-
-4 occurs 53 times 
-
-5 occurs 681 times 
-
-6 occurs 638 times 
-
-7 occurs 199 times 
-
-8 occurs 18 times 
-
+3 occurs 10 times, 
+4 occurs 53 times, 
+5 occurs 681 times, 
+6 occurs 638 times, 
+7 occurs 199 times, 
+8 occurs 18 times. 
 
 Train 
-3 occurs 5 times 
-4 occurs 42 times 
-5 occurs 538 times 
-6 occurs 502 times 
-7 occurs 177 times 
-8 occurs 15 times 
+3 occurs 5 times, 
+4 occurs 42 times, 
+5 occurs 538 times, 
+6 occurs 502 times, 
+7 occurs 177 times, 
+8 occurs 15 times. 
 
 Test 
-3 occurs 5 times 
-4 occurs 11 times 
-5 occurs 143 times 
-6 occurs 136 times 
-7 occurs 22 times 
-8 occurs 3 times 
-8 occurs 3 times 
+3 occurs 5 times, 
+4 occurs 11 times, 
+5 occurs 143 times, 
+6 occurs 136 times, 
+7 occurs 22 times, 
+8 occurs 3 times, 
+8 occurs 3 times. 
 
 All quality parameters are used with different classifiers:
 Results for run with non-shuffled train/test split and standardized input data:
@@ -59,7 +53,7 @@ Total
 5 occurs 681 times, 
 6 occurs 638 times, 
 7 occurs 199 times, 
-8 occurs 18 times 
+8 occurs 18 times. 
 
 Train 
 3 occurs 8 times, 
@@ -67,7 +61,7 @@ Train
 5 occurs 545 times, 
 6 occurs 510 times, 
 7 occurs 159 times, 
-8 occurs 15 times 
+8 occurs 15 times. 
 
 Test 
 3 occurs 2 times, 
@@ -75,7 +69,7 @@ Test
 5 occurs 136 times, 
 6 occurs 128 times, 
 7 occurs 40 times, 
-8 occurs 3 times 
+8 occurs 3 times. 
 
 All quality parameters are used with different classifiers:
 Results for run with non-shuffled train/test split and standardized input data:
