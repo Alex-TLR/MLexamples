@@ -2,6 +2,7 @@
 Author: Aleksej Avramovic
 Date: 24/07/2023
 
+The first experiment on disease prediction data:
 Disease prediction using different classifiers.
 All classifiers use default parameters.
 '''
@@ -35,6 +36,7 @@ print(f'Unique values for prognosis is {numOfPrognosis}.')
 
 prognosis = dataTest['prognosis']
 print(prognosis)
+print('\n')
 
 # Useful features are itching, skin_rash, nodal_skin_eruptions, continuous_sneezing... etc
 # The output is prognosis (converted with One Hot Encoding for Linear regression, or Ordinar Encoder for others)
@@ -52,22 +54,22 @@ y_train_ohe = ohe.fit_transform(y_train).toarray()
 y_test_ohe = ohe.fit_transform(y_test).toarray()
 
 # Linear regression
-linearRegression.linearRegressionMulticlass(x_train, x_test, y_train_ohe, y_test_ohe)
+linearRegression.linearRegressionClassification(x_train, x_test, y_train_ohe, y_test_ohe, 'multi')
 
 # Logistic regression
-logisticRegression.logisticRegressionMulticlass(x_train, x_test, y_train_ord, y_test_ord)
+logisticRegression.logisticRegressionClassification(x_train, x_test, y_train_ord, y_test_ord, 'multi')
 
 # Decision trees
-decisionTree.decisionTreeMulticlass(x_train, x_test, y_train_ord, y_test_ord)
+decisionTree.decisionTreeClassification(x_train, x_test, y_train_ord, y_test_ord, 'multi')
 
-# # Gaussian Navie Bayes
-# gaussianNB.GaussianNaiveBayes(x_train, x_test, y_train_ord, y_test_ord)
+# Gaussian Navie Bayes
+gaussianNB.GaussianNaiveBayesClassification(x_train, x_test, y_train_ord, y_test_ord, 'multi')
 
 # KNN
-knn.kNearestNeighborsMulticlass(x_train, x_test, y_train_ord, y_test_ord)
+knn.kNearestNeighborsClassification(x_train, x_test, y_train_ord, y_test_ord, 'multi')
 
 # Random forest
-randomForest.randomForestMulticlass(x_train, x_test, y_train_ord, y_test_ord)
+randomForest.randomForestClassification(x_train, x_test, y_train_ord, y_test_ord, 'multi')
 
 # support Vector Machine
-supportVectorMachine.supportVectorMachineLinearMulticlass(x_train, x_test, y_train_ord, y_test_ord)
+supportVectorMachine.supportVectorMachineClassification(x_train, x_test, y_train_ord, y_test_ord, 'linear', 'multi')

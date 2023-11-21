@@ -48,7 +48,7 @@ For example:
 |33 | Hypoglycemia                            | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 | 25               |
 |34 | Osteoarthristis                         | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 | 31               |
 |35 | Arthritis                               | 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 | 5                |
-|36 | (vertigo) Paroymsal  Positional Vertigo | 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 | 0                |
+|36 | Paroymsal Positional Vertigo            | 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 | 0                |
 |37 | Acne                                    | 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 | 2                |
 |38 | Urinary tract infection                 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 | 38               |
 |39 | Psoriasis                               | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 | 35               |
@@ -59,7 +59,30 @@ For example:
 In the first experiment, we used train/test split as defined in Training.csv and Testing.csv files. The Testing.csv contains only 42 testing cases, therefore it is not descriptive enough.
 Every kind of classifier will probably have the best possible performance.
 
+Results :
+| Method             | Accuracy | Precision | Recall | F1-Score | MCC   | Number of errors |
+|--------------------|:--------:|:---------:|:------:|:--------:|:-----:|:----------------:|
+|Linear regression   | 0.976    | 0.988     | 0.988  | 0.984    | 0.976 | 1                |
+|Logistic regression | 1.000    | 1.000     | 1.000  | 1.000    | 1.000 | 0                |
+|Decision trees      | 0.976    | 0.988     | 0.988  | 0.984    | 0.976 | 1                |
+|Gaussian Naive Bayes| 1.000    | 1.000     | 1.000  | 1.000    | 1.000 | 0                |
+|k Nearest Neighbors | 1.000    | 1.000     | 1.000  | 1.000    | 1.000 | 0                |
+|Random forest       | 0.976    | 0.988     | 0.988  | 0.984    | 0.976 | 1                |
+|linear SVM          | 1.000    | 1.000     | 1.000  | 1.000    | 1.000 | 0                |
+
 ## The second experiment
 Both data from Training.csv and Testing.csv files are concatenated, afterwitch the data is split into train/test sets.
 In this experiment train and test are split in 50% manner.
 Except Linear Regression model, all other classifiers has near-perfect or perfect performance.  
+Number of both train and test samples is equal to 2481.
+
+Results :
+| Method             | Accuracy | Precision | Recall | F1-Score | MCC   | Number of errors |
+|--------------------|:--------:|:---------:|:------:|:--------:|:-----:|:----------------:|
+|Linear regression   | 0.989    | 0.990     | 0.989  | 0.989    | 0.988 | 28               |
+|Logistic regression | 1.000    | 1.000     | 1.000  | 1.000    | 1.000 | 0                |
+|Decision trees      | 1.000    | 1.000     | 1.000  | 1.000    | 1.000 | 0                |
+|Gaussian Naive Bayes| 1.000    | 1.000     | 1.000  | 1.000    | 1.000 | 0                |
+|k Nearest Neighbors | 1.000    | 1.000     | 1.000  | 1.000    | 1.000 | 0                |
+|Random forest       | 1.000    | 1.000     | 1.000  | 1.000    | 1.000 | 1                |
+|linear SVM          | 1.000    | 1.000     | 1.000  | 1.000    | 1.000 | 0                |

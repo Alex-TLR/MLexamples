@@ -4,6 +4,8 @@ Date: 09/08/2023
 
 Cross validation using stratified train/test split.
 All classifiers use default parameters.
+
+Calculates different metrics of cross validation
 '''
 
 import sys

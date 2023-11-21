@@ -19,7 +19,7 @@ def FullConnectedNetwork1(N):
     model.add(layers.Dense(4, activation = 'relu'))
     model.add(layers.Dense(4, activation = 'relu'))
     model.add(layers.Dense(1, activation = 'sigmoid'))
-    # model.summary()
+    model.summary()
 
     model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
     return model

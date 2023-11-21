@@ -21,6 +21,7 @@ Results for run with non-shuffled train/test split and standardized input data:
 |rbf SVM             | 0.999    | 0.978     | 0.600  | 0.744    | 0.766 | 293.95291  | 31               |
 |FCN model1          | 1.000    | 0.917     | 0.733  | 0.815    | 0.820 |            | 25               |
 
+Time consumption may differ for different runs and on different machines.
 MCC is Matthew's correlation coefficient.  
 Results for Decision trees and Random forest may vary in different runs.  
 Fully Connected Network model1 contains input layer with 29 nodes, wto hidden layers with 4 nodes and Relu activation and the output
@@ -42,6 +43,7 @@ FCN can give different results for different training runs.
 
 mAP (default) is obtained with classifiers with defualt parametr values from sklearn.
 mAP (optimized) is obtained with classifiers after weak parameter optimization:  
-DecisionTree - criterion = 'gini', max_depth = 4, max_leaf_nodes = 10   
-k Nearest Neighbors - n_neighbors = 7  
-linear SVM - C = 0.001  
+DecisionTree: criterion = 'gini', max_depth = 4, max_leaf_nodes = 10   
+k Nearest Neighbors: n_neighbors = 7  
+linear SVM: C = 0.001
+

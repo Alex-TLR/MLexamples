@@ -8,39 +8,24 @@ from classifiers import printResults
 from time import time
 
 
-def kNearestNeighborsBinary(x_train, x_test, y_train, y_test):
-
+def kNearestNeighborsClassification(x_train, x_test, y_train, y_test, mode):
+    # Classification using KNN
     # Make KNN model
+
+    # Training
     start = time()
     kNN = KNeighborsClassifier()
     kNN.fit(x_train, y_train)
-    
     # Predict
     y_pred = kNN.predict(x_test)
     stop = time()
-    print(f'Time spent is {stop - start} seconds.')
 
     # Print report
-    printResults.printResults(y_test, y_pred, "kNN", 'binary')
-    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
-    print("\n")
-    return None
-
-
-def kNearestNeighborsMulticlass(x_train, x_test, y_train, y_test):
-
-    # Make KNN model
-    start = time()
-    kNN = KNeighborsClassifier()
-    kNN.fit(x_train, y_train)
-    
-    # Predict
-    y_pred = kNN.predict(x_test)
-    stop = time()
-    print(f'Time spent is {stop - start} seconds.')
-
-    # Print report
-    printResults.printResults(y_test, y_pred, "kNN", 'macro')
+    if mode == 'binary':
+        printResults.printResults(y_test, y_pred, "kNN", 'binary')
+    elif mode == 'multi':
+        printResults.printResults(y_test, y_pred, "kNN", 'macro')
+    print(f'Time spent is {(stop - start):.3f} seconds.')
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None
@@ -56,41 +41,43 @@ def knnOptimized(x_train, x_test, y_train, y_test, n, nClass):
     # Predict
     y_pred = kNN.predict(x_test)
     stop = time()
-    print(f'Time spent is {stop - start} seconds.')
 
     # Print report
     printResults.printResults(y_test, y_pred, "kNN", nClass)
+    print(f'Time spent is {stop - start} seconds.')
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
     print("\n")
     return None
 
 
-def kNearestNeighborsCV(x, y):
+def kNearestNeighborsCV(x, y, mode):
 
-    scores = ['average_precision']
+    if mode == 'binary':
+        scores = ['precision_macro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
+        kNN = KNeighborsClassifier()
+        scores = cross_validate(kNN, x, y, scoring = scores, cv = 5)
+        print("k Nearest neighbors:")
+        print(scores)
+        AP = scores['test_average_precision']
+        return AP 
 
-    # Make logistic regression model
-    start = time()
-    kNN = KNeighborsClassifier()
-    scores = cross_validate(kNN, x, y, scoring = scores, cv = 5)
-    stop = time()
-    print("k Nearest neighbors:")
-    print(f'Time spent is {stop - start:.3f} seconds.', sep="")
-    AP = scores['test_average_precision']
-    return AP 
+    elif mode == 'multi': #provjeriti za AP
+        scores = ['precision_macro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
+        kNN = KNeighborsClassifier()
+        scores = cross_validate(kNN, x, y, scoring = scores, cv = 5)
+        print("k Nearest neighbors:")
+        print(scores)
+        AP = scores['test_average_precision']
+        return AP 
 
 
-def kNearestNeighborsCVOptimal(x, y):
+def kNearestNeighborsCVOptimal1(x, y):
 
-    scores = ['average_precision']
-
-    # Make logistic regression model
-    start = time()
+    # kNN classification with optimized parameters for Credit card fraud detection problem   
+    scores = ['precision_micro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
     kNN = KNeighborsClassifier(n_neighbors = 7)
     scores = cross_validate(kNN, x, y, scoring = scores, cv = 5)
-    stop = time()
     print("k Nearest neighbors (best performance):")
-    print(f'Time spent is {stop - start:.3f} seconds.', sep="")
     AP = scores['test_average_precision']
     return AP 
 
