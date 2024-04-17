@@ -2,13 +2,13 @@ import sys
 sys.path.append('../')
 
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.model_selection import cross_validate
 from classifiers import printResults
 from time import time
 
 
-def kNearestNeighborsClassification(x_train, x_test, y_train, y_test, mode):
+def kNearestNeighborsClassification(x_train, x_test, y_train, y_test, mode = 'binary', verbose = 0):
     # Classification using KNN
     # Make KNN model
 
@@ -18,17 +18,18 @@ def kNearestNeighborsClassification(x_train, x_test, y_train, y_test, mode):
     kNN.fit(x_train, y_train)
     # Predict
     y_pred = kNN.predict(x_test)
+    acc = accuracy_score(y_test, y_pred)
     stop = time()
 
     # Print report
-    if mode == 'binary':
-        printResults.printResults(y_test, y_pred, "kNN", 'binary')
-    elif mode == 'multi':
-        printResults.printResults(y_test, y_pred, "kNN", 'macro')
-    print(f'Time spent is {(stop - start):.3f} seconds.')
-    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
-    print("\n")
-    return None
+    if verbose:
+        if mode == 'binary':
+            printResults.printResults(y_test, y_pred, "kNN", 'binary')
+        elif mode == 'multi':
+            printResults.printResults(y_test, y_pred, "kNN", 'macro')
+        print(f'Time spent is {(stop - start):.3f} seconds.')
+        print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
+    return acc
 
 
 def knnOptimized(x_train, x_test, y_train, y_test, n, nClass):
@@ -50,25 +51,27 @@ def knnOptimized(x_train, x_test, y_train, y_test, n, nClass):
     return None
 
 
-def kNearestNeighborsCV(x, y, mode):
+def kNearestNeighborsCV(x, y, mode = 'binary', verbose = 0):
 
     if mode == 'binary':
         scores = ['precision_macro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
         kNN = KNeighborsClassifier()
         scores = cross_validate(kNN, x, y, scoring = scores, cv = 5)
-        print("k Nearest neighbors:")
-        print(scores)
+        if verbose:
+            print("k Nearest neighbors:")
+            print(scores)
         AP = scores['test_average_precision']
         return AP 
 
-    elif mode == 'multi': #provjeriti za AP
-        scores = ['precision_macro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
+    elif mode == 'multi': 
+        scores = ['precision_macro', 'recall_macro', 'f1_macro', 'matthews_corrcoef']
         kNN = KNeighborsClassifier()
         scores = cross_validate(kNN, x, y, scoring = scores, cv = 5)
-        print("k Nearest neighbors:")
-        print(scores)
-        AP = scores['test_average_precision']
-        return AP 
+        if verbose:
+            print("k Nearest neighbors:")
+            print(scores)
+        P = scores['test_precision_macro']
+        return P 
 
 
 def kNearestNeighborsCVOptimal1(x, y):

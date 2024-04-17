@@ -2,12 +2,12 @@ import sys
 sys.path.append('../')
 
 from sklearn import tree
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.model_selection import cross_validate
 from classifiers import printResults
 from time import time 
 
-def decisionTreeClassification(x_train, x_test, y_train, y_test, mode):
+def decisionTreeClassification(x_train, x_test, y_train, y_test, mode = 'binary', verbose = 0):
     # Classification using Decision Trees
     # Make decision tree model
 
@@ -17,17 +17,18 @@ def decisionTreeClassification(x_train, x_test, y_train, y_test, mode):
     decisionTree.fit(x_train, y_train) 
     # Predict 
     y_pred = decisionTree.predict(x_test)
+    acc = accuracy_score(y_test, y_pred)
     stop = time()
     
     # Print report 
-    if mode == 'binary':
-        printResults.printResults(y_test, y_pred, "Decision Tree", 'binary')
-    elif mode == 'multi':
-        printResults.printResults(y_test, y_pred, "Decision Tree", 'macro')
-    print(f'Time spent is {(stop - start):.3f} seconds.')
-    print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
-    print("\n")
-    return None 
+    if verbose:
+        if mode == 'binary':
+            printResults.printResults(y_test, y_pred, "Decision Tree", 'binary')
+        elif mode == 'multi':
+            printResults.printResults(y_test, y_pred, "Decision Tree", 'macro')
+        print(f'Time spent is {(stop - start):.3f} seconds.')
+        print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
+    return acc 
 
 
 def dtOptimized(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes, nClass):
@@ -45,7 +46,6 @@ def dtOptimized(x_train, x_test, y_train, y_test, c, maxDepth, maxLeafNodes, nCl
     # Print report 
     printResults.printResults(y_test, y_pred, "Decision Tree", nClass)
     print('Confusion matrix:\n', confusion_matrix(y_test, y_pred))
-    print("\n")
     return None 
 
 
@@ -73,26 +73,28 @@ def dtMaxLeafNodes(x_train, x_test, y_train, c, maxDepth, maxLeafNodes):
     return y_pred
 
 
-def decisionTreeCV(x, y, mode):
+def decisionTreeCV(x, y, mode = 'binary', verbose = 0):
 
     # Make decision tree model
     if mode == 'binary':
         scores = ['precision_macro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
         decisionTree = tree.DecisionTreeClassifier()
         scores = cross_validate(decisionTree, x, y, scoring = scores, cv = 5)
-        print("Decision trees:")
-        print(scores)
+        if verbose:
+            print("Decision trees:")
+            print(scores)
         AP = scores['test_average_precision']
         return AP 
 
-    elif mode == 'multi': #provjeriti zaAP
-        scores = ['precision_macro', 'recall_macro', 'f1_macro', 'matthews_corrcoef', 'average_precision']
+    elif mode == 'multi':
+        scores = ['precision_macro', 'recall_macro', 'f1_macro', 'matthews_corrcoef']
         decisionTree = tree.DecisionTreeClassifier()
         scores = cross_validate(decisionTree, x, y, scoring = scores, cv = 5)
-        print("Decision trees:")
-        print(scores)
-        AP = scores['test_average_precision']
-        return AP 
+        if verbose:
+            print("Decision trees:")
+            print(scores)
+        P = scores['test_precision_macro']
+        return P 
 
 
 def decisionTreeCVOptimal1(x, y):
