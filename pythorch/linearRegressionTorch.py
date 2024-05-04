@@ -3,14 +3,14 @@ Author: Aleksej Avramovic
 Last update: 18/04/2024
 
 Inspired by: Deep Learning with PyTorch Live Course (freeCodeCamp.org)
+             Leacture on Linear regression
 
 Linear regression implementation from the scratch.
 Classification of transactions using different classifiers.
 In this case, a transaction can be valid or fraud, therefore it is binary classification.
-All classifiers use default parameters.
 The shuffle for train/test split is disabled. Every new run should give the same results.
-
 '''
+
 import sys
 sys.path.append('../')
 
@@ -191,6 +191,8 @@ def fit(epochs, model, lossFunction, opt, train_data):
             pred = model(x_train)
             # Calculate loss
             y_train = y_train.unsqueeze(1)
+            print("Output: ", type(pred))
+            print("Label: ", type(y_train))
             loss = lossFunction(pred, y_train)
             # Compute gradients
             loss.backward()
@@ -198,9 +200,11 @@ def fit(epochs, model, lossFunction, opt, train_data):
             opt.step()
             # Reset gradients
             opt.zero_grad()
+            break
 
         progressBar(i + 1, epochs, prefix = 'Progress: ', suffix = 'Loss: ' + f'{loss.item():.2f}', length = 60, fill = '#')
-    
+
+
 fit(numberOfEpochs, model, lossFunction, opt, train_data)
 print("\n")
 

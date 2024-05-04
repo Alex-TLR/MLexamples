@@ -8,3 +8,5 @@ The CSV data file can be downloaded from this [link](https://www.kaggle.com/mlg-
 
 3. Wine Quality Prediction from [link](https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009).
 
+## PyTorch examples
+This folder contains PyTorch examples.

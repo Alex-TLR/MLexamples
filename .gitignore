@@ -8,3 +8,4 @@ classifiers/__pycache__
 002_DiseasePrediction/Testing.csv 
 003_WineQuality/__pycache__
 003_WineQuality/winequality-red.csv
+pytorch/mnist/
