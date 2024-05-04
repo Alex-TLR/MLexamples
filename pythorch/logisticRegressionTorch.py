@@ -14,6 +14,7 @@ from torchvision.datasets import MNIST
 import torchvision.transforms as transforms
 import numpy as np
 
+# Change download= to True or False if necessary
 dataset = MNIST(root = 'mnist/', download = False)
 
 # print(dataset[0])
@@ -41,20 +42,20 @@ print("Valid data length ", len(val_data))
 from torch.utils.data import DataLoader
 
 # Batch size
-batchSize = 256
+batchSize = 32
 
 # Learning rate
 lr = 1e-3
 
 # Number of epochs
-numberOfEpochs = 50
+numberOfEpochs = 5
 
 # Number of classes
 numberOfClasses = 10
 
-# Define train and validation loader with the cunks of the batchSize size
+# Define train and validation loader with the chunks of the batchSize size
 train_loader = DataLoader(train_data, batchSize, shuffle=True)
-val_loader = DataLoader(val_data, batchSize)
+val_loader = DataLoader(val_data, batchSize*2)
 test_loader = DataLoader(dataset_test, batchSize)
 
 # In logistic regression, 
@@ -123,8 +124,7 @@ class logisticRegressionModel(nn.Module):
         loss = lossFunction(output, labels)
         # TODO check type of loss and check type and value of lgCrossEentropy
         return loss
-
-        
+   
 def myOneHotEncoder(labels, numberOfClasses):
     # print("My one hot encoder")
     # print(labels)
@@ -170,7 +170,6 @@ def myCrossEntropy(output, labels, numOfClasses):
     return loss
     # return None
 
-    
 thisModel = logisticRegressionModel(inputSize, numberOfClasses)
 # print(thisModel.model.weight.shape, thisModel.model.bias.shape)
 # print(list(thisModel.parameters()))  
@@ -205,10 +204,10 @@ def fit(epochs, model, lossFunction, opt, train_data, val_data):
         tLoss = []
         for batch, labels in train_data:
             # Generate prediction
-            output = model(batch)
+            p = model(batch)
             # Calculate loss
             # myloss = myCrossEntropy(output, labels, numberOfClasses)
-            loss = lossFunction(output, labels)
+            loss = lossFunction(p, labels)
             tLoss.append(loss.item())
             # Calculate gradients
             loss.backward()
@@ -217,7 +216,7 @@ def fit(epochs, model, lossFunction, opt, train_data, val_data):
             # Reset gradients
             opt.zero_grad()
             # Check accuracy (not necessary)
-            p = model.lgSoftmax(output)
+            p = model.lgSoftmax(p)
             _, o = torch.max(p, dim=1)
             a = accuracy(o, labels)
             tAcc.append(a.item())
@@ -230,12 +229,12 @@ def fit(epochs, model, lossFunction, opt, train_data, val_data):
         vLoss = []
         for batch, labels in val_data:
             # Generate prediction
-            output = model(batch)
+            p = model(batch)
             # Calculate loss
-            l = lossFunction(output, labels)
+            l = lossFunction(p, labels)
             vLoss.append(l.item())
             # Find largest probability
-            p = model.lgSoftmax(output)
+            p = model.lgSoftmax(p)
             _, o = torch.max(p, dim=1)
             # Calculate metrics
             a = accuracy(o, labels)
@@ -258,10 +257,10 @@ print("Check test images.")
 testAcc = []
 testLoss = []
 for batch, labels in test_loader:
-    output = thisModel(batch)
-    l = lossFunction(output, labels)
+    p = thisModel(batch)
+    l = lossFunction(p, labels)
     testLoss.append(l.item())
-    p = thisModel.lgSoftmax(output)
+    p = thisModel.lgSoftmax(p)
     _, o = torch.max(p, dim=1)
     a = accuracy(o, labels)
     testAcc.append(a.item())
