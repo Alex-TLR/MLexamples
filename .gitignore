@@ -9,3 +9,4 @@ classifiers/__pycache__
 003_WineQuality/__pycache__
 003_WineQuality/winequality-red.csv
 pytorch/mnist/
+pytorch/cifar10/

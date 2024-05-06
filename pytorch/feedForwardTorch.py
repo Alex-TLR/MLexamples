@@ -1,5 +1,13 @@
+''' 
+Author: Aleksej Avramovic
+Last update: 05/05/2024
+
+Inspired by: Deep Learning with PyTorch Live Course (freeCodeCamp.org)
+             Lecture on Feed forward networks
+
+'''
 import torch 
-from torchvision.datasets import MNIST
+from torchvision.datasets import MNIST, CIFAR10
 import torchvision.transforms as transforms
 import numpy as np 
 from torch.utils.data import DataLoader
@@ -23,32 +31,52 @@ def accuracy(predictions, truth):
     a = torch.tensor(torch.sum(predictions == truth).item() / len(truth))
     return a
 
-# TODO: Try with different datasets
+# TODO: Try with different datasets (CIFAR10)
+# Visit Kaggle
+# Class labels for CIFAR-10
+# classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+
+transformData = transforms.Compose([transforms.ToTensor()])
+# transformData = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+
 # Change download= to True or False if necessary
-dataset = MNIST(root = 'mnist/', download = False)
+# dataset = MNIST(root = 'mnist/', download = False)
+dataset = CIFAR10(root = 'cifar10/', download = False)
 
-# Transforma data to tensor (specific to the torchvision.datasets)
-dataset_train = MNIST(root = 'mnist/',  train = True, transform = transforms.ToTensor())
-dataset_test = MNIST(root = 'mnist/', train = False, transform = transforms.ToTensor())
+# Transform data to tensor (specific to the torchvision.datasets)
+# dataset_train = MNIST(root = 'mnist/',  train = True, transform = transformData)
+# dataset_test = MNIST(root = 'mnist/', train = False, transform = transformData)
+dataset_train = CIFAR10(root = 'cifar10/',  train = True, transform = transformData)
+dataset_test = CIFAR10(root = 'cifar10/', train = False, transform = transformData)
 
-# Get image size
+# Get the image size
 train_tensor, train_label = dataset_train[0]
 imageSize = train_tensor.size()
-inputSize = imageSize[1] * imageSize[2]
+print(f'Image size: {imageSize[0]}, {imageSize[1]}, {imageSize[2]}')
+inputSize = imageSize[0] * imageSize[1] * imageSize[2]
+
+# Get size of the training data
+dataSize = len(dataset_train)
+tSize = int(0.8 * dataSize)
+vSize = dataSize - tSize
 
 from torch.utils.data import random_split
-train_data, val_data = random_split(dataset_train, [50000, 10000])
+torch.manual_seed(42)
+train_data, val_data = random_split(dataset_train, [tSize, vSize])
 print("Train data length ", len(train_data))
 print("Valid data length ", len(val_data))
 
 # Batch size
-batchSize = 64
+batchSize = 32
 
 # Learning rate (KEY)
-lr = 0.5
+lr = [0.2, 0.1, 0.01]
 
 # Number of epochs
-numberOfEpochs = 5
+numberOfEpochs = [32, 32, 25]
+
+# Check the LR nE consistency
+assert(len(lr) == len(numberOfEpochs)), "Number of epochs must be equal to the LR"
 
 # Number of classes
 numberOfClasses = 10
@@ -87,18 +115,49 @@ class feedForwardModel(nn.Module):
         p = e / torch.sum(e)
         return p
 
+class feedForwardModelDeep(nn.Module):
+    
+    def __init__(self, iSize, hSize1, hSize2, nClasses):
+        super().__init__()
+        self.inputSize = iSize
+        self.hiddenSize1 = hSize1
+        self.hiddenSize2 = hSize2
+        self.numOfClasses = nClasses
+        self.layer1 = nn.Linear(iSize, hSize1)
+        self.layer2 = nn.Linear(hSize1, hSize2)
+        self.layer3 = nn.Linear(hSize2, hSize2)
+        self.layer4 = nn.Linear(hSize2, nClasses)
+        self.activation = relu
+
+    def forward(self, inputData):
+        inputData = inputData.reshape(-1, self.inputSize)
+        outputData = self.layer1(inputData)
+        outputData = self.activation(outputData)
+        outputData = self.layer2(outputData)
+        outputData = self.activation(outputData)
+        outputData = self.layer3(outputData)
+        outputData = self.activation(outputData)
+        outputData = self.layer4(outputData)
+        return outputData
+    
+    def lgSoftmax(self, input):
+        e = torch.exp(input)
+        p = e / torch.sum(e)
+        return p
 
 # Define model
-thisModel = feedForwardModel(inputSize, 32, numberOfClasses)
-# print(thisModel.model.weight.shape, thisModel.model.bias.shape)
+# thisModel = feedForwardModelDeep(inputSize, 92, 48, numberOfClasses)
+thisModel = feedForwardModelDeep(inputSize, 128, 64, numberOfClasses)
 # print(list(thisModel.parameters()))
 print(thisModel)
 
-# Define optimization
-opt = torch.optim.SGD(thisModel.parameters(), lr = lr)
+# Define history
+# Keeps accuracy and loss for both training and validation in each epoch
+H = []
 
-def fit(epochs, model, lossFunction, opt, train_data, val_data):
+def fit(epochs, model, lossFunction, lr, train_data, val_data, history):
 
+    opt = torch.optim.SGD(model.parameters(), lr = lr)
     for i in range(epochs):
         # Training
         tAcc = []
@@ -147,9 +206,34 @@ def fit(epochs, model, lossFunction, opt, train_data, val_data):
         'Validation loss: ' + f'{meanL:.2f} ' + 'Validation accuracy: ' + f'{meanA:.2f}'
 
         progressBar(i + 1, epochs, prefix = 'Progress: ', suffix = suffixArray, length = 60, fill = '#')
+        
+        currentHistory = [meanTL, meanTA, meanL, meanA]
+        history.append(currentHistory)
 
-fit(numberOfEpochs, thisModel, lossFunction, opt, train_loader, val_loader)
+    print('\n')
+    return model, history
+
+for i in range(len(lr)):
+    lrCurrent = lr[i]
+    nEpochs = numberOfEpochs[i]
+    thisModel, H = fit(nEpochs, thisModel, lossFunction, lrCurrent, train_loader, val_loader, H)
 print("\n")
+
+# print(H)
+# Plot loss/accuracy
+import matplotlib.pyplot as plt
+# Extract validation loss/acc
+vLoss = [v[2] for v in H]
+vAcc = [v[3] for v in H]
+
+plt.figure(figsize = (10, 5))
+plt.subplot(1, 2, 1)
+plt.plot(range(len(H)), vLoss)
+plt.title("Validation loss")
+plt.subplot(1, 2, 2)
+plt.plot(range(len(H)), vAcc)
+plt.title("Validation accuracy")
+plt.show()
 
 print("Check test images.")
 testAcc = []
