@@ -5,6 +5,8 @@ Last update: 18/04/2024
 Inspired by: Deep Learning with PyTorch Live Course (freeCodeCamp.org)
              Leacture on Linear regression
 
+             https://www.youtube.com/watch?v=vo_fUOk-IKk&list=PLWKjhJtqVAbm3T2Eq1_KgloC7ogdXxdRa&index=1
+
 Linear regression implementation from the scratch.
 Classification of transactions using different classifiers.
 In this case, a transaction can be valid or fraud, therefore it is binary classification.

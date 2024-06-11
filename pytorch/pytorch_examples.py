@@ -1,3 +1,11 @@
+'''
+Start the course 
+https://www.youtube.com/watch?v=c36lUUr864M
+
+make examples and change your code
+
+'''
+
 import torch
 
 # # Scalar

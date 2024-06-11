@@ -5,6 +5,8 @@ Last update: 07/05/2024
 Inspired by: Deep Learning with PyTorch Live Course (freeCodeCamp.org)
              Lectures on Image classification, ResNet, Regularization and Data augmentation
 
+             https://www.youtube.com/watch?v=TN9fMYQxw4E&list=PLWKjhJtqVAbm3T2Eq1_KgloC7ogdXxdRa&index=4
+             https://www.youtube.com/watch?v=sJF6PiAjE1M&list=PLWKjhJtqVAbm3T2Eq1_KgloC7ogdXxdRa&index=5
 '''
 
 import torch 
@@ -65,7 +67,7 @@ print("Valid data length ", len(val_data))
 
 # TODO: why larger size does not work properly
 # Batch size
-batchSize = 128
+batchSize = 256
 
 # Learning rate (KEY)
 lr = [0.01]
@@ -347,7 +349,7 @@ class Cifar10Res9Model(BasicModel):
     def flatLayer(self, numOfClasses):
         layers = [nn.MaxPool2d(4),
                   nn.Flatten(),
-                  nn.Linear(512, numberOfClasses)]
+                  nn.Linear(512, numOfClasses)]
         return nn.Sequential(*layers)
     
     def forward(self, x):

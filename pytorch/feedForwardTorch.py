@@ -5,6 +5,8 @@ Last update: 05/05/2024
 Inspired by: Deep Learning with PyTorch Live Course (freeCodeCamp.org)
              Lecture on Feed forward networks
 
+             https://www.youtube.com/watch?v=9suSsTVhYuw&list=PLWKjhJtqVAbm3T2Eq1_KgloC7ogdXxdRa&index=3
+
 '''
 import torch 
 from torchvision.datasets import MNIST, CIFAR10

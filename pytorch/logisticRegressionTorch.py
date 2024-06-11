@@ -5,6 +5,8 @@ Last update: 04/05/2024
 Inspired by: Deep Learning with PyTorch Live Course (freeCodeCamp.org)
              Lecture on Logistic regression
 
+             https://www.youtube.com/watch?v=4ZZrP68yXCI&list=PLWKjhJtqVAbm3T2Eq1_KgloC7ogdXxdRa&index=2
+
 Logistic regression implementation from the scratch.
 The shuffle for train/test split is disabled. Every new run should give the same results.
 '''
